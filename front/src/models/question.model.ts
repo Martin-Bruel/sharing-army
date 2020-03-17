@@ -7,4 +7,5 @@ export interface Answer {
 export interface Question {
     label: string;
     answers: Answer[];
+    id: number;
 }

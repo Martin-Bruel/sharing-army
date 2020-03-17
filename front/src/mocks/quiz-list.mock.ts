@@ -3,6 +3,7 @@ import { Question } from '../models/question.model';
 
 export const QUESTION_ACTOR: Question = {
     label: 'Jean Gabin a joué dans...',
+    id:3,
     answers: [
         {
             value: 'Les tuches II',
@@ -17,6 +18,7 @@ export const QUESTION_ACTOR: Question = {
 
 export const QUESTION_SPORT: Question = {
     label: 'Le sport avec un volant est le...',
+    id:3,
     answers: [
         {
             value: 'Le volley',
