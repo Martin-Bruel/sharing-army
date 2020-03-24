@@ -1,0 +1,49 @@
+.title{
+    font-weight: bold;
+    padding-top: 1em;
+    font-size: 5em;
+    text-align: center;
+}
+
+.menu{
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: row;
+}
+
+.menu-bouton{
+    width: 33%;
+    text-align: center;
+    margin: 10px;
+    height: 400px;
+}
+
+.box{
+    font-weight: bold;
+    font-size: 3em;
+    border-radius: 1em;
+    height: 100%;
+}
+
+.quiz-list{
+    background-color: #349EEB;
+}
+
+.param{
+    background-color: #FFD966;
+
+}
+
+.history{
+    background-color: #349EEB;
+
+}
+
+a:visited, a:link{
+    text-decoration: none;
+}
+.content{
+    padding-top: 1em;
+}
