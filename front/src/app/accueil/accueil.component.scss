@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 .title{
     font-weight: bold;
     padding-top: 1em;
@@ -8,7 +10,7 @@
 .menu{
     margin-top: 2em;
     display: flex;
-    justify-content: space-around;
+    //justify-content: space-between;
     align-items: stretch;
     flex-direction: row;
 }
@@ -22,13 +24,13 @@
 
 .box{
     font-weight: bold;
-    font-size: 3em;
+    font-size: 3rem;
     border-radius: 1em;
     height: 100%;
 }
 
 .quiz-list{
-    background-color: #349EEB;
+    background-color: $blue;
 }
 
 .param{
@@ -37,7 +39,7 @@
 }
 
 .history{
-    background-color: #349EEB;
+    background-color: $blue;
 
 }
 
