@@ -3,11 +3,14 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { HeaderComponent } from './header/header.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
 import { EditQuizComponent } from './quizzes/quiz-edit/quiz-edit.component';
+import { AccueilComponent } from './accueil/accueil.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing.module';
 
@@ -19,6 +22,8 @@ import { AppRoutingModule } from './app.routing.module';
     HeaderComponent,
     QuizFormComponent,
     EditQuizComponent,
+    AccueilComponent,
+    
   ],
   imports: [
     BrowserModule,
