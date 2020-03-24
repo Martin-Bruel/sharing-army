@@ -26,6 +26,10 @@ export class HeaderComponent implements OnInit {
         oeoe = "Edition de Quiz"
         break;
       }
+      case "settings":{
+        oeoe = "Paramètres"
+        break;
+      }
     }
     return oeoe;
   }

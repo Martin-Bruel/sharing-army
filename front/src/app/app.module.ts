@@ -16,6 +16,7 @@ import { QuestionListComponent } from './questions/question-list/question-list.c
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
 import { QuestionComponent } from './questions/question/question.component';
 import { GameComponent } from './game/game.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { GameComponent } from './game/game.component';
     QuestionFormComponent,
     QuestionComponent,
     GameComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
