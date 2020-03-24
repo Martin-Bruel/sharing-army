@@ -1,0 +1,15 @@
+<button class="button-card" routerLink="/quiz-list">Back</button>
+
+<div>
+    <h2>
+        name:{{quiz.name}}
+    </h2>
+    <span>
+        question 1:{{question.label}}
+    </span>
+    <button class="button-card" (click)="selectAnswer()">{{question.answer[0]}}</button>
+    <button class="button-card" (click)="selectAnswer()">{{question.answer[1]}}</button>
+    <button class="button-card" (click)="selectAnswer()">{{question.answer[2]}}</button>
+    <button class="button-card" (click)="selectAnswer()">{{question.answer[3]}}</button>
+</div>
+
