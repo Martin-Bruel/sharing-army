@@ -18,7 +18,7 @@ export class GameComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private quizService: QuizService) { 
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
-    this.question = this.quiz.question[0] ;
+    this.question = this.quiz.questions[0] ;
   }
 
   ngOnInit() {
