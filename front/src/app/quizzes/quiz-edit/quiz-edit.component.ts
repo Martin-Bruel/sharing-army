@@ -21,5 +21,4 @@ export class EditQuizComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.quizService.setSelectedQuiz(id);
   }
-
 }

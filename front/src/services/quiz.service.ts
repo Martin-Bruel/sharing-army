@@ -60,6 +60,7 @@ export class QuizService {
   }
 
   deleteQuiz(quiz: Quiz) {
+    console.log(quiz)
     const urlWithId = this.quizUrl + '/' + quiz.id;
     this.http.delete<Quiz>(urlWithId, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
   }
