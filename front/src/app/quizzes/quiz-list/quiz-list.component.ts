@@ -21,8 +21,10 @@ export class QuizListComponent implements OnInit {
   ngOnInit() {
   }
 
-  quizSelected(selected: boolean) {
-    console.log('event received from child:', selected);
+  quizSelected(quiz: Quiz) {
+    console.log('event received from child:', quiz);
+    this.router.navigate(['/game/'+ quiz.id]);
+
   }
 
   quizDeleted (quiz:Quiz){

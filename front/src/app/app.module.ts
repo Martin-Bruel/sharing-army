@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
 import { QuizComponent } from './quizzes/quiz/quiz.component';
@@ -13,6 +12,7 @@ import { QuestionListComponent } from './questions/question-list/question-list.c
 import { QuestionFormComponent } from './questions/question-form/question-form.component';
 import { QuestionComponent } from './questions/question/question.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     EditQuizComponent,
     QuestionListComponent,
     QuestionFormComponent,
-    QuestionComponent
+    QuestionComponent,
+    GameComponent,
   ],
   imports: [
     BrowserModule,
