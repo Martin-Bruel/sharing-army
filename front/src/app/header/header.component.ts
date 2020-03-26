@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { print } from 'util';
 
 @Component({
   selector: 'app-header',
@@ -28,6 +27,10 @@ export class HeaderComponent implements OnInit {
       }
       case "settings":{
         oeoe = "Paramètres"
+        break;
+      }
+      default:{
+        oeoe = "Pas encore de titre"
         break;
       }
     }

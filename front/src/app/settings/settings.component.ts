@@ -12,6 +12,11 @@ export class SettingsComponent implements OnInit {
 
   constructor() {}
   
+  change = false;
+
+  couleur(){
+    return this.change? 'green' : 'red';
+  }
 
   ngOnInit() {
       console.log(this+" loaded successfully");

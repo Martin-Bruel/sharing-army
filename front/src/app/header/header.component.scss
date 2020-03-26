@@ -9,7 +9,34 @@
 }
 
 .header {
+  display: flex;
+  height: 100px;
+  text-align: center;
   background: $blue;
-  padding: 0.5em;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+.title{
+  font-size: 2rem;
+  width: 100%;
+  //text-align: center;
+  padding: 35px;
+  //padding-left: 50%;
+}
+
+.bouton-retour{
+  background-color: red;
+  border: none;
+  height: 100%;
+  text-decoration: none;
+  font-size: 2rem;
+  color: $white;
+  padding: 0 40px;
+  margin-right: 20px;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.bouton-retour:hover{
+  background-color: #000000;
 }
