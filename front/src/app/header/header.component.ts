@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  
+  //Todo : tester des trucs avec @Input depuis l'appel du header dans les autres html
+  // <app-header [header_attribut]="input"></app-header> 
   constructor(private router: Router) { }
 
+  @Input()
+  titre : String;
+  
   title(){
     var coupeDecale = this.router.url.split('/')[1];
     console.log(coupeDecale);
@@ -36,7 +40,6 @@ export class HeaderComponent implements OnInit {
     }
     return oeoe;
   }
-
 
   ngOnInit() {   
     console.log("Url : "+this.router.url);
