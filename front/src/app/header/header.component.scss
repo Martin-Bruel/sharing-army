@@ -17,8 +17,9 @@
 }
 
 .title{
-  font-size: 2rem;
+  font-size: 3em;
   width: 100%;
+  font-weight: bold;
   //text-align: center;
   padding: 35px;
   //padding-left: 50%;
@@ -33,10 +34,15 @@
   color: $white;
   padding: 0 40px;
   margin-right: 20px;
-  transition: background-color 0.5s ease-in-out;
-  cursor: pointer;
+  transition: background-color 0.2s ease-in-out; 
 }
 
 .bouton-retour:hover{
-  background-color: #000000;
+  //border: red 4px solid;
+  background-color: orange;
+  cursor: pointer;
+}
+
+.back{
+  width: 100px;
 }

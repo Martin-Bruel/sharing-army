@@ -1,7 +1,4 @@
-<app-header></app-header>
-
-<button class="button-card" routerLink="/quiz-list">Back</button>
-
+<app-header [titre]="'Edition de Quiz'"></app-header>
 <ng-container *ngIf="quiz">
     <h2>{{quiz.name}}</h2>
     <app-question-form [quiz]="quiz"></app-question-form>

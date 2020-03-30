@@ -71,6 +71,8 @@ router.put('/:quizId', (req, res) => {
       res.status(500).json(err)
     }
   }
+
+  //todo : router.get('/:theme' , (req, res) => ...) + une fonction pour renvoyer tt les Quizz comportant le theme demande
   
 })
 

@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
+import { QuizListTheme } from './quizzes/quiz-list-theme/quiz-list-theme.component'
 import { QuizComponent } from './quizzes/quiz/quiz.component';
 import { HeaderComponent } from './header/header.component';
 import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
@@ -18,10 +19,12 @@ import { QuestionComponent } from './questions/question/question.component';
 import { GameComponent } from './game/game.component';
 import { SettingsComponent } from './settings/settings.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     QuizListComponent,
+    QuizListTheme,
     QuizComponent,
     HeaderComponent,
     QuizFormComponent,
@@ -32,6 +35,7 @@ import { SettingsComponent } from './settings/settings.component';
     QuestionComponent,
     GameComponent,
     SettingsComponent,
+    
   ],
   imports: [
     BrowserModule,

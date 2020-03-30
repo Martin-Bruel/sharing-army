@@ -2,7 +2,38 @@
 
 h2 {
     // Add some CSS here! What if you try to change the background?
-    box-shadow: 7px 5px black;
-    background-color: #7987d5;
+    //box-shadow: 7px 5px black;
+    //background-color: #7987d5;
     padding: 5px;
+}
+
+.title{
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.title::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 4em;
+    background: linear-gradient(to left,#fff 0,rgba(255,255,255,0) 100%);
+}
+
+.select, .delete{
+    color: $white;
+    border: none;
+    margin: 10px 50px;
+    font-size: 1em;
+}
+
+.select{
+    background-color: green;
+}
+
+.delete{
+    background-color: red;
 }

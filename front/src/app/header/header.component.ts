@@ -13,37 +13,9 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   @Input()
-  titre : String;
-  
-  title(){
-    var coupeDecale = this.router.url.split('/')[1];
-    console.log(coupeDecale);
-    var oeoe: string;
-    switch(coupeDecale) {
-      case "quiz-list":{
-        oeoe = "Mosaïque";
-        console.log
-        break; 
-      }
-      case "edit-quiz":{
-        oeoe = "Edition de Quiz"
-        break;
-      }
-      case "settings":{
-        oeoe = "Paramètres"
-        break;
-      }
-      default:{
-        oeoe = "Pas encore de titre"
-        break;
-      }
-    }
-    return oeoe;
-  }
+  titre: string;
 
-  ngOnInit() {   
-    console.log("Url : "+this.router.url);
-    console.log("Full route : "+window.location.href);
+  ngOnInit() {
+    console.log("Full route : "+window.location.href+" | Titre : "+this.titre);
   }
-
 }
