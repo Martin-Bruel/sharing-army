@@ -1,19 +1,26 @@
-<app-header></app-header>
+<!--<app-header [titre]="'Quiz en cours...'"></app-header>-->
+<game-header></game-header>
 
 <div>
-    <h2>
-        name:{{game.name}}
-    </h2>
     <div *ngIf="!game.isFinished" class="game-question">
+        <div class="info">
+            <h2 class="question">        
+                Question : {{game.currentStep+1}}
+            </h2>
+            <h2 class="nom">
+                Nom: {{game.name}}
+            </h2>
+        </div>
+        <hr width="90%" size="3" color="black">
         <app-game-question  [question]="getCurrentQuestion()" (answer)="answerSelected($event)"></app-game-question> 
     </div>
     <div *ngIf="game.isFinished">
-        <div>
-            Vous avez {{game.right}} bonne reponse sur {{game.stepsGame.length}} questions
+        <div class="info">
+            <h2 class="question">        
+                Vous avez {{game.right}} bonne reponse sur {{game.stepsGame.length}} questions
+            </h2>
         </div>
-        <button class="button-card" routerLink="/quiz-list">Valider</button>
-
+        <button class="button-card valider" routerLink="/quiz-list">Valider</button>
     </div>
-    
 </div>
 

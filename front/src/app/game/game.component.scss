@@ -1,1 +1,11 @@
 @import '../../styles/card.scss';
+
+.info{
+    display: flex;
+    //justify-content: center;
+    justify-content: space-around;
+}
+
+h2{
+    font-size: 3em;
+}

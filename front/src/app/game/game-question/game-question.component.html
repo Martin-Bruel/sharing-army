@@ -1,7 +1,5 @@
-<div>
-    <span>
-        question 1:{{question.label}}
-    </span>
+<div class="question">{{question.label}}</div>
+<div class="reponse">
     <button class="button-card" (click)="answerSelected(question.answers[0])">{{question.answers[0].value}}</button>
     <button class="button-card" (click)="answerSelected(question.answers[1])">{{question.answers[1].value}}</button>
     <button class="button-card" (click)="answerSelected(question.answers[2])">{{question.answers[2].value}}</button>

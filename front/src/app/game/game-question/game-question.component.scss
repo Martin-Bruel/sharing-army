@@ -1,8 +1,41 @@
 @import '../../../styles/card.scss';
 
-h2 {
-    // Add some CSS here! What if you try to change the background?
-    box-shadow: 7px 5px black;
-    background-color: #7987d5;
-    padding: 5px;
+
+.question{
+    height: 120px;
+    font-size: 50px;
+    //font-weight: bolder;
+    line-height: initial;
+    margin-top: 0.5em;
+    padding-left: 7%;
+    white-space: initial;
+}
+
+.reponse{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    //justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.button-card:nth-child(1){
+    margin: 0.5em 100%;
+    align-self: flex-start;
+
+}
+
+.button-card:nth-child(4){
+    margin: 0.5em 100%;
+    align-self: flex-end;
+}
+
+.button-card{
+    padding: 1em 1em;
+    background-color: $blue;
+    font-size: 40px;
+    border: none;
+    width: 600px;
+    flex: none;
 }

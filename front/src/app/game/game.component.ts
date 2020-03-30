@@ -40,6 +40,7 @@ export class GameComponent implements OnInit {
       if(++this.game.currentStep == this.game.stepsGame.length)
         this.game.isFinished = true;
     }
+    this.numQuestion++
   }
 
   getCurrentQuestion(){

@@ -19,6 +19,8 @@ import { QuestionComponent } from './questions/question/question.component';
 import { GameComponent } from './game/game.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GameQuestionComponent } from './game/game-question/game-question.component';
+import { GameHeaderComponent } from './game/game-header/game-header.component';
+
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { GameQuestionComponent } from './game/game-question/game-question.compon
     GameComponent,
     SettingsComponent,
     GameQuestionComponent,
+    GameHeaderComponent,
   ],
   imports: [
     BrowserModule,

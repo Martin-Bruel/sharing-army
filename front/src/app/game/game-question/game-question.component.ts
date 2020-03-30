@@ -14,7 +14,7 @@ export class GameQuestionComponent implements OnInit {
   @Output()
   answer: EventEmitter<Answer> = new EventEmitter<Answer>();
 
-  constructor() {
+   constructor() {
   }
 
   ngOnInit() {
