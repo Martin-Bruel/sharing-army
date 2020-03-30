@@ -1,15 +1,19 @@
-<button class="button-card" routerLink="/quiz-list">Back</button>
+<app-header></app-header>
 
 <div>
     <h2>
-        name:{{quiz.name}}
+        name:{{game.name}}
     </h2>
-    <span>
-        question 1:{{question.label}}
-    </span>
-    <button class="button-card" (click)="selectAnswer()">{{question.answer[0]}}</button>
-    <button class="button-card" (click)="selectAnswer()">{{question.answer[1]}}</button>
-    <button class="button-card" (click)="selectAnswer()">{{question.answer[2]}}</button>
-    <button class="button-card" (click)="selectAnswer()">{{question.answer[3]}}</button>
+    <div *ngIf="!game.isFinished" class="game-question">
+        <app-game-question  [question]="getCurrentQuestion()" (answer)="answerSelected($event)"></app-game-question> 
+    </div>
+    <div *ngIf="game.isFinished">
+        <div>
+            Vous avez {{game.right}} bonne reponse sur {{game.stepsGame.length}} questions
+        </div>
+        <button class="button-card" routerLink="/quiz-list">Valider</button>
+
+    </div>
+    
 </div>
 

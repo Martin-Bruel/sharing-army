@@ -20,7 +20,7 @@
       }
     ],
     "id": 112,
-    "quizId": "12"
+    "quizId": 12
   },
   {
     "label": "Quel est l’homme qui détient le service le plus rapide ?",
@@ -43,7 +43,7 @@
       }
     ],
     "id": 113,
-    "quizId": "12"
+    "quizId": 12
   },
   {
     "label": "Quel était la Vitesse du service le plus rapide ?",
@@ -66,7 +66,7 @@
       }
     ],
     "id": 114,
-    "quizId": "12"
+    "quizId": 12
   },
   {
     "label": "Quel effet n’existe pas au tennis ?",
@@ -89,6 +89,6 @@
       }
     ],
     "id": 115,
-    "quizId": "12"
+    "quizId": 12
   }
 ]
