@@ -1,7 +1,17 @@
 [
   {
-      "theme":"Sport",
-      "name":"Tennis",
-      "id":"12"
+    "theme": "Sport",
+    "name": "Tennis",
+    "id": 12,
+    "questions": [
+    ]
+
+  },
+  {
+      "theme": "Twitch",
+      "name": "Twitch game",
+      "id": 13,
+      "questions": [
+      ]
   }
 ]
