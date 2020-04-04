@@ -11,8 +11,6 @@ router.get('/', (req, res) => {
   try {
     
     const quizzes = Quiz.get()
-
-    console.log(quizzes)
     
     quizzes.forEach(quiz => {
       

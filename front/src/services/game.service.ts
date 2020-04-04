@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
-import { Game, StepGame } from 'src/models/game.model';
+import { Game } from 'src/models/game.model';
 import { QuizService } from './quiz.service';
+import { Answer } from 'src/models/question.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,36 +32,45 @@ export class GameService {
 
   private httpOptions = httpOptionsBase;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private quizService:QuizService) {
   }
 
-  createGame(quizId:number, quizService:QuizService) {
+  createGame(quizId:number) {
     
-    quizService.setSelectedQuiz(quizId);
-    quizService.quizSelected$.subscribe((quiz:Quiz) => {
+    this.quizService.setSelectedQuiz(quizId);
+    this.quizService.quizSelected$.subscribe((quizSelected:Quiz) => {
 
-
-        this.game = {} as Game;
-
-        this.game.name=quiz.name;
-        this.game.stepsGame = [];
-        this.game.right = 0;
-
-
-        quiz.questions.forEach(quesiton => {
-            console.log(quesiton);
-            var stepGame: StepGame = {} as StepGame;
-            stepGame.question = quesiton;
-            stepGame.done = false;
-            this.game.stepsGame.push(stepGame);
-        });
-        this.game.name = quiz.name;
-        this.game.currentStep = 0;
+      this.game = {} as Game;
+      this.game.quiz = quizSelected;
+      this.game.step = 0;
+      this.game.date = Date.now();
+      this.game.answersSelected = [];
+      this.game.rightAnswer = 0;
+      this.http.post<Game>(this.gameUrl, this.game, this.httpOptions).subscribe((game) => {
+        this.game = game;
         this.game$.next(this.game);
+      });
+   })
+  }
 
-        console.log('oui');
+  addAnswer(answer:Answer) {
 
-        console.log(this.game);
+    const urlWithId = this.gameUrl + '/' + this.game.id;
+    this.game.answersSelected.push(answer);
+    this.http.put<Game>(urlWithId, this.game, this.httpOptions).subscribe((game) => {
+      this.game = game;
+      if(answer.isCorrect)
+        this.game.rightAnswer++;
+      this.game$.next(this.game);
     })
-    }
+  }
+
+  deleteGame(){
+
+    const urlWithId = this.gameUrl + '/' + this.game.id;
+    this.http.delete<Game>(urlWithId, this.httpOptions).subscribe((game) => {
+      this.game = game;
+      this.game$.next(this.game);
+    })
+  }
 }
