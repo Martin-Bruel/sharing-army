@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener} from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
 import { Button } from 'protractor';
+import { Styles } from 'src/app/styles';
 
 
 export enum KEY_CODE {
@@ -23,7 +24,7 @@ export class GameQuestionComponent implements OnInit {
   @Output()
   answer: EventEmitter<Answer> = new EventEmitter<Answer>();
 
-   constructor() {
+   constructor(private styles : Styles) {
   }
   
   @HostListener('window:keyup', ['$event'])

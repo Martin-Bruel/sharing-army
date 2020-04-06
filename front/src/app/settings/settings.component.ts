@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
+import { Styles } from '../styles';
 
 @Component({
   selector: 'settings',
@@ -10,12 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 export class SettingsComponent implements OnInit {
 
 
-  constructor() {}
-  
-  change = false;
+  constructor(private styles : Styles) {}
 
-  couleur(){
-    return this.change? 'green' : 'red';
+  change(taille : number){
+    console.log(taille);
+    this.styles.textSize = taille;
   }
 
   ngOnInit() {

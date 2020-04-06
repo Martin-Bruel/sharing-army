@@ -21,6 +21,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { GameQuestionComponent } from './game/game-question/game-question.component';
 import { GameHeaderComponent } from './game/game-header/game-header.component';
 
+import { Styles } from './styles';
+
 
 
 @NgModule({
@@ -47,7 +49,7 @@ import { GameHeaderComponent } from './game/game-header/game-header.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [Styles],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

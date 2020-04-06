@@ -1,4 +1,9 @@
 <app-header [titre]="'Paramètres'"></app-header>
-ça marche
-<div class="test" [style.background-color]="couleur()"></div>
-<button class="button-couleur" (click)="change=!change">Change la couleur</button>
+<div class="carac">
+    Changer la taille des caractères<br>
+    <input #test type="range" min="50" max="100" value="50" step="1" class="slider" (change)="change(test.value)">
+    <fieldset>
+        <legend>Taille actuelle : {{styles.textSize}}</legend> 
+        <div class="preview" [style.font-size.px]="styles.textSize">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+    </fieldset>
+</div>

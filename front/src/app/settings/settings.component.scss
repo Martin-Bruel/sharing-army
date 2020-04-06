@@ -1,5 +1,48 @@
-.test{
-    width: 50px;
-    height: 50px;
-    background-color: blueviolet;
+@import '../../styles/variables.scss';
+
+.carac{
+    font-size: 50px;
+    margin: 45px;
+    line-height: initial;
+    white-space: initial;
+}
+
+.slider{
+    appearance: none;
+    height: 10px;
+    width: 500px;
+    border-radius: 10px;
+    background: grey;
+    outline: none;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb{
+    appearance: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: $blue;
+}
+
+fieldset{
+    width: max-content;
+    margin-top: 20px;
+    border: 2px solid black;
+
+    //background-color: rgb(209, 209, 209);
+}
+
+.preview{
+    overflow: hidden;
+    white-space: nowrap;
+    width: 1000px;
+    margin: 1px;
+}
+
+.preview:before{
+    content: " ";
+    position: absolute;
+    width: 1000px;
+    background-image: linear-gradient(-90deg,#f2f2f2 0px,rgba(255,255,255,0) 10%);
 }
