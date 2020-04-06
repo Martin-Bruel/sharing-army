@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { QuizService } from 'src/services/quiz.service';
-import { Game, StepGame } from 'src/models/game.model';
+import { Game } from 'src/models/game.model';
 import { GameService } from 'src/services/game.service';
 import { Answer } from 'src/models/question.model';
+import { QuestionComponent } from '../questions/question/question.component';
 
 @Component({
   selector: 'app-game',
@@ -14,14 +14,15 @@ export class GameComponent implements OnInit {
 
   game: Game;
   
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private gameService: GameService) { 
+  constructor(private route: ActivatedRoute, private gameService: GameService) { 
 
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
-    gameService.createGame(id,quizService);
+    gameService.createGame(id);
     
     this.gameService.game$.subscribe((game: Game) => {
       this.game=game;
     })
+
   }
 
   ngOnInit() {
@@ -29,23 +30,22 @@ export class GameComponent implements OnInit {
 
   answerSelected(answer:Answer){
 
-    if(answer.isCorrect)
-      this.game.right++;
-
-    if(!this.game.isFinished){
-
-      this.game.stepsGame[this.game.currentStep].userAnswer = answer;
-      this.game.stepsGame[this.game.currentStep].done = true;
-      
-      if(++this.game.currentStep == this.game.stepsGame.length)
-        this.game.isFinished = true;
-    }
+    this.gameService.addAnswer(answer);
   }
 
   getCurrentQuestion(){
 
-    if(!this.game.isFinished)
-      return this.game.stepsGame[this.game.currentStep].question;
+    if(!this.isFinished())
+      return this.game.quiz.questions[this.game.step];
+    
   }
 
+  isFinished(){
+
+    return this.game.step >= this.game.quiz.questions.length;
+  }
+
+  deleteGame(){
+    this.gameService.deleteGame();
+  }
 }
