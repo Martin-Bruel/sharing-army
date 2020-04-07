@@ -2,10 +2,12 @@
 
 /* You can add global styles to this file, and also import other style files */
 html {
+  height: 100%;
   font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
 }
 
 body {
+  height: 100%;
   margin: 0;
-  //background-color: $app-background-color;
+  background-color: $app-background-color;
 }
