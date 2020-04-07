@@ -1,9 +1,16 @@
 <app-header [titre]="'Paramètres'"></app-header>
-<div class="carac">
+<div class="options">
     Changer la taille des caractères<br>
-    <input #test type="range" min="50" max="100" value="50" step="1" class="slider" (change)="change(test.value)">
+    <input #slider type="range" min="50" max="100" value="50" step="1" class="slider" (input)="changeSize(slider.value)">
     <fieldset>
         <legend>Taille actuelle : {{styles.textSize}}</legend> 
         <div class="preview" [style.font-size.px]="styles.textSize">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
     </fieldset>
+</div>
+<div class="options">
+    Assombrir le fond<br>
+    <label class="switch">
+        <input #check type="checkbox" class="checkbox" (change)="changeColor(check.checked)">
+        <span class="check round"></span>
+    </label>
 </div>

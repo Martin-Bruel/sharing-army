@@ -11,12 +11,18 @@ export class SettingsComponent implements OnInit {
 
   constructor(private styles : Styles) {}
 
-  change(taille : number){
-    console.log(taille);
+  changeSize(taille : number){
+    //console.log(taille);
     this.styles.textSize = taille;
   }
 
+  changeColor(bool : boolean){
+    console.log(bool);
+    if(bool) this.styles.color = '#aaaaaa'
+    else this.styles.color = '#f2f2f2'
+  }
+
   ngOnInit() {
-      console.log(this+" loaded successfully");
+    console.log(this+" loaded successfully");
   }
 }

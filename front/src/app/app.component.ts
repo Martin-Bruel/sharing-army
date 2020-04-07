@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Styles } from '../app/styles';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'starter-quiz';
+  constructor(private styles : Styles){}
 }

@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.carac{
+.options{
     font-size: 50px;
     margin: 45px;
     line-height: initial;
@@ -19,6 +19,13 @@
 
 .slider::-webkit-slider-thumb{
     appearance: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: $blue;
+}
+
+.slider::-moz-range-thumb{
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -46,3 +53,63 @@ fieldset{
     width: 1000px;
     background-image: linear-gradient(-90deg,#f2f2f2 0px,rgba(255,255,255,0) 10%);
 }
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+}
+
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.check{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: grey;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.check:before {
+    position: absolute;
+    content: "";
+    height: 32px;
+    width: 32px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .checkbox:checked + .check {
+    background-color: $blue;
+  }
+  
+  .checkbox:focus + .check {
+    box-shadow: 0 0 1px $blue;
+  }
+  
+  .checkbox:checked + .check:before {
+    -webkit-transform: translateX(60px);
+    -ms-transform: translateX(60px);
+    transform: translateX(60px);
+  }
+  
+  /* Rounded sliders */
+  .check.round {
+    border-radius: 40px;
+  }
+  
+  .check.round:before {
+    border-radius: 50%;
+  }
