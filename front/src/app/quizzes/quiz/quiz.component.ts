@@ -28,6 +28,12 @@ export class QuizComponent implements OnInit {
   }
 
   deleteQuiz(){
-    this.quizDeleted.emit(this.quiz);
+    
+  }
+
+  clickMethod(name: string) {
+    if(confirm("Etes vous sur de vouloir supprimer "+name)) {
+      this.quizDeleted.emit(this.quiz);
+    }
   }
 }

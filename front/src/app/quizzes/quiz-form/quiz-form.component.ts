@@ -46,5 +46,7 @@ export class QuizFormComponent implements OnInit {
 
     this.quizService.addQuiz(quizToCreate);
   }
+    
+
 
 }
