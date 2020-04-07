@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Quiz } from 'src/models/quiz.model';
 import { QuizService } from 'src/services/quiz.service';
 import { Question } from 'src/models/question.model';
+import { Styles } from '../../styles';
 
 @Component({
   selector: 'app-question-list',
@@ -13,7 +14,7 @@ export class QuestionListComponent implements OnInit {
   @Input()
   quiz: Quiz;
   
-  constructor(private quizService: QuizService) { }
+  constructor(private quizService: QuizService, private styles : Styles) { }
 
   ngOnInit() {
   }

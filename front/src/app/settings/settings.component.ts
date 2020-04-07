@@ -11,6 +11,15 @@ export class SettingsComponent implements OnInit {
 
   constructor(private styles : Styles) {}
 
+  getStylesSize(){
+    return this.styles.textSize;
+  }
+
+  getStylesColor(){
+    return this.styles.color != '#f2f2f2'
+  }
+
+
   changeSize(taille : number){
     //console.log(taille);
     this.styles.textSize = taille;

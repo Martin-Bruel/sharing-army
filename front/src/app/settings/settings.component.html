@@ -1,7 +1,7 @@
 <app-header [titre]="'Paramètres'"></app-header>
 <div class="options">
     Changer la taille des caractères<br>
-    <input #slider type="range" min="50" max="100" value="50" step="1" class="slider" (input)="changeSize(slider.value)">
+    <input #slider type="range" min="50" max="100" [value]="getStylesSize()" step="1" class="slider" (input)="changeSize(slider.value)">
     <fieldset>
         <legend>Taille actuelle : {{styles.textSize}}</legend> 
         <div class="preview" [style.font-size.px]="styles.textSize">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
@@ -10,7 +10,7 @@
 <div class="options">
     Assombrir le fond<br>
     <label class="switch">
-        <input #check type="checkbox" class="checkbox" (change)="changeColor(check.checked)">
+        <input #check type="checkbox" class="checkbox" [checked]="getStylesColor()" (change)="changeColor(check.checked)">
         <span class="check round"></span>
     </label>
 </div>
