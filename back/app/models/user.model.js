@@ -2,5 +2,6 @@ const Joi = require('joi')
 const BaseModel = require('../utils/base-model.js')
 
 module.exports = new BaseModel('User', {
-  name: Joi.string().required()
+  name: Joi.string().required(),
+  setting : Joi.object()
 })

@@ -20,9 +20,11 @@ import { GameComponent } from './game/game.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GameQuestionComponent } from './game/game-question/game-question.component';
 import { GameHeaderComponent } from './game/game-header/game-header.component';
+import { UserListComponent } from './users/users-list/users-list.component';
+import { UserComponent } from './users/user/user.component';
+
 
 import { Styles } from './styles';
-
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { Styles } from './styles';
     SettingsComponent,
     GameQuestionComponent,
     GameHeaderComponent,
+    UserListComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

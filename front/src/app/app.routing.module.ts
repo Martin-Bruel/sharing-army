@@ -6,9 +6,11 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { GameComponent } from './game/game.component';
 import { SettingsComponent } from './settings/settings.component';
 import { QuizListTheme } from './quizzes/quiz-list-theme/quiz-list-theme.component';
+import { UserListComponent } from './users/users-list/users-list.component';
 
 const routes: Routes = [
-    {path:'', component: AccueilComponent},
+    {path:'', component: UserListComponent},
+    {path:'accueil', component: AccueilComponent},
     {path:'quiz-list', component: QuizListComponent},
     {path:'edit-quiz/:id', component: EditQuizComponent},
     {path:'game/:id', component: GameComponent},
