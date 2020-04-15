@@ -22,6 +22,7 @@ import { GameQuestionComponent } from './game/game-question/game-question.compon
 import { GameHeaderComponent } from './game/game-header/game-header.component';
 import { UserListComponent } from './users/users-list/users-list.component';
 import { UserComponent } from './users/user/user.component';
+import { UserFormComponent } from './users/user-form/user-form.component';
 
 
 import { Styles } from './styles';
@@ -46,6 +47,7 @@ import { Styles } from './styles';
     GameHeaderComponent,
     UserListComponent,
     UserComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

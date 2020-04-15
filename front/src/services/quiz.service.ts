@@ -48,7 +48,6 @@ export class QuizService {
 
   addQuiz(quiz: Quiz) {
     console.log(quiz)
-    console.log("non")
     this.http.post<Quiz>(this.quizUrl, quiz, this.httpOptions).subscribe(() => this.setQuizzesFromUrl());
   }
 

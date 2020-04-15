@@ -31,4 +31,9 @@ export class UserService{
             this.users$.next(this.users);
         })
     }
+
+    addUser(user : User){
+        console.log(user);
+        this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.setUsersFromUrl());
+    }
 }

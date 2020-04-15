@@ -1,0 +1,31 @@
+.userCard{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 1rem;
+    width: 250px;
+    transition: font-size 0.4s;
+}
+
+.userCard:hover{
+    font-size: 70px;
+}
+
+img{
+    width: 128px;
+    height: 128px;
+    margin: 7px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 50%;
+    transition: width 0.4s, height 0.4s ,background-color 0.4s;
+    cursor: pointer;
+}
+
+img:hover{
+    background-color: orange;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 180px;
+}
+

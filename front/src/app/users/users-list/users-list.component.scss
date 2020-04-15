@@ -1,0 +1,32 @@
+.conteneur{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.title{
+    font-weight: bold;
+    padding-top: 1em;
+    font-size: 5em;
+    text-align: center;
+}
+
+.addUser{
+    margin-top: 40px;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.userList{
+    margin-top: 40px;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+    align-content: stretch;
+}

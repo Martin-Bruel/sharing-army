@@ -7,6 +7,6 @@ import { Styles } from '../app/styles';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'starter-quiz';
+  title = 'quizTalin';
   constructor(private styles : Styles){}
 }
