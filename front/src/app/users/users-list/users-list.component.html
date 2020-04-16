@@ -3,7 +3,7 @@
     <div class="addUser">pas fini</div>
     <div class='userList'>
         <div  *ngFor="let user of userList">
-            <user [user]="user"></user>
+            <user [user]="user" (userSelected)="selectedUser($event)"></user>
         </div>
     </div>
 </div>

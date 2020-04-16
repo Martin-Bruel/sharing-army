@@ -32,8 +32,20 @@ export class UserService{
         })
     }
 
+    setSelectedUser(userId : number){
+        const urlId = this.userUrl + '/' + userId;
+        this.http.get<User>(urlId).subscribe((user)=>{
+            this.userSelected$.next(user);
+        })
+    }
+
     addUser(user : User){
         console.log(user);
         this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.setUsersFromUrl());
+    }
+
+    updateUser(user : User){
+        const urlId = this.userUrl + '/' + sessionStorage.getItem("userId");
+        this.http.put<User>(urlId, user, this.httpOptions).subscribe((user)=>this.userSelected$.next(user));
     }
 }

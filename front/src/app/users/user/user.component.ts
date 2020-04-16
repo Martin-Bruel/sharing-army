@@ -16,5 +16,9 @@ export class UserComponent implements OnInit{
     @Output()
     userSelected: EventEmitter<User> = new EventEmitter<User>();
 
-    constructor(){} 
+    constructor(){}
+
+    selectUser(){
+      this.userSelected.emit(this.user);
+    }
 }
