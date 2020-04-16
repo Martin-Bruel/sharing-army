@@ -1,13 +1,38 @@
 [
     {
-        "name": "Michel",
-        "id": 12
+      "name": "Michel",
+      "id": 12,
+      "setting": {
+        "id": 12,
+        "color": "#f2f2f2",
+        "font": "58"
+      }
     },
     {
-        "name": "Michel2",
-        "id": 13
-    },    {
-        "name": "Michel3",
-        "id": 12
+      "name": "Michel2",
+      "id": 13,
+      "setting": {
+        "id": 13,
+        "color": "#aaaaaa",
+        "font": 70
+      }
+    },
+    {
+      "name": "Michel3",
+      "id": 14,
+      "setting": {
+        "id": 14,
+        "color": "#48BB3D",
+        "font": 50
+      }
+    },
+    {
+      "name": "Michel4",
+      "id": 15,
+      "setting": {
+        "id": 15,
+        "color": "#7E3DBB",
+        "font": 50
+      }
     }
-]
+  ]
