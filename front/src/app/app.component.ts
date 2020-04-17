@@ -1,12 +1,30 @@
-import { Component } from '@angular/core';
-import { Styles } from '../app/styles';
+import { Component, ViewEncapsulation, HostBinding, OnInit, OnChanges } from '@angular/core';
+import { UserStyles } from './user-styles';
+import { UserService } from 'src/services/user.service';
+import { User } from 'src/models/user.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent{
+
   title = 'quizTalin';
-  constructor(private styles : Styles){}
+
+  constructor(private styles : UserStyles,private userService : UserService){   
+    console.log("Constructeur App-Component")
+    const userId = +sessionStorage.getItem("userId");
+    if(userId!=0){
+      userService.setSelectedUser(userId); 
+      console.log("Retrieving the current user ...");
+    }
+    this.userService.userSelected$.subscribe((user)=>{
+        console.log("Color changed",user)
+        styles.color = user.setting.color;
+        styles.textSize = user.setting.font;
+        document.documentElement.style.setProperty('--bg',user.setting.color);
+    })
+  }
 }

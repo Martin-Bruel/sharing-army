@@ -1,7 +1,7 @@
 
 <app-header [titre]="'Liste de Quizs'"></app-header>
 <app-quiz-form></app-quiz-form>
-<div class="quiz-list" [ngStyle]="{'background-color':styles.color}">
+<div class="quiz-list">
     <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->

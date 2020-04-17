@@ -15,7 +15,5 @@ export class HeaderComponent implements OnInit {
   @Input()
   titre: string;
 
-  ngOnInit() {
-    console.log("Full route : "+window.location.href+" | Titre : "+this.titre);
-  }
+  ngOnInit() {}
 }
