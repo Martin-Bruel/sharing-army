@@ -19,7 +19,7 @@
     <br>
     <button class="button-card select" (click)="selectQuiz()">Selectionner</button>
     <br>
-    <button class="button-card delete" (click)="clickMethod(quiz.name)">Supprimer</button>
+    <button class="button-card delete" (click)="deleteQuiz(quiz.name)">Supprimer</button>
     <h1>{{title}}</h1>
     <nav>
         <a routerLink="/edit-quiz/{{quiz.id}}">Edit</a>

@@ -17,6 +17,12 @@ export class QuizComponent implements OnInit {
   @Output()
   quizDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
+  @Output()
+  suppr: EventEmitter<string> = new EventEmitter<string>();
+
+  @Output()
+  quizToDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
+
   constructor() {
   }
 
@@ -27,13 +33,10 @@ export class QuizComponent implements OnInit {
     this.quizSelected.emit(this.quiz);
   }
 
-  deleteQuiz(){
-    
-  }
 
-  clickMethod(name: string) {
-    if(confirm("Etes vous sur de vouloir supprimer "+name)) {
-      this.quizDeleted.emit(this.quiz);
-    }
+
+  deleteQuiz(name: string) {
+    this.suppr.emit("active")
+    this.quizToDeleted.emit(this.quiz)
   }
 }

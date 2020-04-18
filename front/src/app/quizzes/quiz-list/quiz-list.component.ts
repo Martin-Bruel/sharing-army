@@ -19,6 +19,8 @@ export class QuizListComponent implements OnInit {
 
   public textBody : string;
 
+  public quizToDelete : Quiz;
+
   constructor(private router: Router, public quizService: QuizService, private gameService : GameService, private styles : UserStyles) {
 
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
@@ -40,10 +42,12 @@ export class QuizListComponent implements OnInit {
     })
   }
 
-  quizDeleted (quiz:Quiz){
+  quizDeleted (){
 
-    console.log('evenet recieved from child', quiz);
-    this.quizService.deleteQuiz(quiz);
+    console.log('evenet recieved from child', this.quizToDelete);
+    document.getElementById("suppr").classList.remove("active")
+    document.getElementById("overlay").classList.remove("active")
+    this.quizService.deleteQuiz(this.quizToDelete);
   }
 
   quizEdit(quiz: Quiz) {
@@ -63,5 +67,20 @@ export class QuizListComponent implements OnInit {
 
   textEdit(text : string){
     this.textBody = text
+  }
+
+  openSupprModal( modal : string ) {
+    if (modal == null) return
+    document.getElementById("suppr").classList.add(modal)
+    document.getElementById("overlay").classList.add(modal)
+  }
+
+  closeSupprModal() {
+    document.getElementById("suppr").classList.remove("active")
+    document.getElementById("overlay").classList.remove("active")
+  }
+
+  setQuizToDelete( quiz : Quiz){
+    this.quizToDelete = quiz
   }
 }
