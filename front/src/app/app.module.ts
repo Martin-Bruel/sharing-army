@@ -26,6 +26,7 @@ import { UserFormComponent } from './users/user-form/user-form.component';
 
 
 import { UserStyles } from './user-styles';
+import { RouteService } from 'src/services/route.service';
 
 
 @NgModule({
@@ -55,7 +56,10 @@ import { UserStyles } from './user-styles';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [UserStyles],
+  providers: [
+    UserStyles,
+    RouteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

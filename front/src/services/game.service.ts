@@ -16,42 +16,43 @@ export class GameService {
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
 
-  /**
-   * The list of quiz.
-   * The list is retrieved from the mock.
-   */
+  
   private game: Game;
 
-  /**
-   * Observable which contains the list of the quiz.
-   * Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
-   */
-  public game$: Subject<Game> = new Subject();
+  public gameCreated$: Subject<Game> = new Subject();
+
+  public gameSelected$ : Subject<Game> = new Subject();
 
   private gameUrl = serverUrl + '/game';
 
   private httpOptions = httpOptionsBase;
 
-  constructor(private http: HttpClient, private quizService:QuizService) {
-  }
+  constructor(private http: HttpClient) {}
 
-  createGame(quizId:number) {
+  createGame(quiz:Quiz) {
     
-    this.quizService.setSelectedQuiz(quizId);
-    this.quizService.quizSelected$.subscribe((quizSelected:Quiz) => {
+    this.game = {} as Game;
+    this.game.quiz = quiz;
+    this.game.step = 0;
+    this.game.date = Date.now();
+    this.game.answersSelected = [];
+    this.game.rightAnswer = 0;
+    this.http.post<Game>(this.gameUrl, this.game, this.httpOptions).subscribe((game) => {
 
-      this.game = {} as Game;
-      this.game.quiz = quizSelected;
-      this.game.step = 0;
-      this.game.date = Date.now();
-      this.game.answersSelected = [];
-      this.game.rightAnswer = 0;
-      this.http.post<Game>(this.gameUrl, this.game, this.httpOptions).subscribe((game) => {
-        this.game = game;
-        this.game$.next(this.game);
-      });
-   })
+      this.game = game;
+      this.gameCreated$.next(this.game);
+    })
   }
+  
+  setSelectedGame(gameId:number){
+
+    const urlWithId = this.gameUrl + '/' + gameId;
+    this.http.get<Game>(urlWithId).subscribe((game) => {
+      this.gameSelected$.next(game);
+      this.game = game;
+    });
+  }
+
 
   addAnswer(answer:Answer) {
 
@@ -61,16 +62,16 @@ export class GameService {
       this.game = game;
       if(answer.isCorrect)
         this.game.rightAnswer++;
-      this.game$.next(this.game);
+      this.gameSelected$.next(this.game);
     })
   }
 
   deleteGame(){
 
     const urlWithId = this.gameUrl + '/' + this.game.id;
-    this.http.delete<Game>(urlWithId, this.httpOptions).subscribe((game) => {
-      this.game = game;
-      this.game$.next(this.game);
+    this.http.delete<Game>(urlWithId, this.httpOptions).subscribe(() => {
+      this.game = null;
+      this.gameSelected$.next(this.game);
     })
   }
 }

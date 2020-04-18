@@ -1,7 +1,7 @@
 <!--<app-header [titre]="'Quiz en cours...'"></app-header>-->
-<game-header></game-header>
+<game-header (delete)="deleteGame()"></game-header>
 
-<div>
+<div *ngIf="game!=null">
     <div *ngIf="!isFinished()" class="game-question">
         <div class="info">
             <h2 class="question">        

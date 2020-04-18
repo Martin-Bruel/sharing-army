@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, HostBinding, OnInit, OnChanges } from '@a
 import { UserStyles } from './user-styles';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
+import { RouteService } from 'src/services/route.service';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,9 @@ export class AppComponent{
 
   title = 'quizTalin';
 
-  constructor(private styles : UserStyles,private userService : UserService){   
+  constructor(private styles : UserStyles,private userService : UserService, private routeService : RouteService){   
     console.log("Constructeur App-Component")
+    this.routeService.loadRouting();
     const userId = +sessionStorage.getItem("userId");
     if(userId!=0){
       userService.setSelectedUser(userId); 

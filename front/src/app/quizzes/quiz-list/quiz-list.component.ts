@@ -3,6 +3,8 @@ import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
 import { Router } from '@angular/router';
 import { UserStyles } from '../../user-styles';
+import { GameService } from 'src/services/game.service';
+import { Game } from 'src/models/game.model';
 
 @Component({
   selector: 'app-quiz-list',
@@ -13,22 +15,28 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
-  constructor(private router: Router, public quizService: QuizService,private styles : UserStyles) {
+  constructor(private router: Router, public quizService: QuizService, private gameService : GameService, private styles : UserStyles) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
   }
 
   ngOnInit() {
+
   }
 
   quizSelected(quiz: Quiz) {
-    console.log('event received from child:', quiz);
-    this.router.navigate(['/game/'+ quiz.id]);
 
+    console.log('event received from child:', quiz);
+
+    this.gameService.createGame(quiz);
+    this.gameService.gameCreated$.subscribe((game: Game) => {
+      this.router.navigate(['/game/'+ game.id]);
+    })
   }
 
   quizDeleted (quiz:Quiz){
+
     console.log('evenet recieved from child', quiz);
     this.quizService.deleteQuiz(quiz);
   }
