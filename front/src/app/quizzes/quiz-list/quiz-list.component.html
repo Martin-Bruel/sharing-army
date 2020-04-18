@@ -1,10 +1,20 @@
 
 <app-header [titre]="'Liste de Quizs'"></app-header>
-<app-quiz-form></app-quiz-form>
+<app-quiz-form (popup)="openModal($event)" (text)="textEdit($event)"></app-quiz-form>
 <div class="quiz-list" [ngStyle]="{'background-color':styles.color}">
     <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
         <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (quizDeleted)="quizDeleted($event)" (quizEdit)="quizEdit($event)"></app-quiz>
     </div>
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="title">Erreur</div>
+      <button data-close-button class="close-button" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body">
+        {{textBody}}
+    </div>
+  </div>
+  <div id="overlay"></div>
   </div>

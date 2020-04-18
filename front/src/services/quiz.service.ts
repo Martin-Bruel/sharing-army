@@ -5,6 +5,7 @@ import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
 import { Question } from '../models/question.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import { QuizListComponent } from 'src/app/quizzes/quiz-list/quiz-list.component';
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
+import { QuizListComponent } from '../quiz-list/quiz-list.component';
+
+
+
 
 
 @Component({
@@ -13,13 +17,18 @@ import { Quiz } from '../../../models/quiz.model';
 export class QuizFormComponent implements OnInit {
   // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
   // avoid TemplateDrivenForm (another type of form)
+  @Output()
+  popup : EventEmitter<string> = new EventEmitter<string>();
 
+  @Output()
+  text : EventEmitter<string> = new EventEmitter<string>();
   /**
    * QuizForm: Object which manages the form in our component.
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
    */
   public quizForm: FormGroup;
   public THEME_LIST: string[] = ['Sport', 'Actor'];
+  public quizListComponent :QuizListComponent;
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
@@ -34,17 +43,35 @@ export class QuizFormComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  texte : string
   addQuiz() {
     // We retrieve here the quiz object.rom the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
 
+    if (quizToCreate.name == '' || quizToCreate.theme == ''){
+      this.popup.emit("active")
+      this.texte = "Il n'y a pas de";
+      if (quizToCreate.name == ''){
+        this.texte += " titre" ;
+      }
+      if (quizToCreate.theme == ''){
+        if (quizToCreate.name == ''){
+          this.texte += " et de" ;
+        }
+        this.texte += " thème" ;
+      }
+      this.text.emit(this.texte)
+    }
     // Do you need to log your object here in your class? Uncomment the code below
     // and open your console in your browser by pressing F12 and choose the tab "Console".
     // You will see your quiz object when you click on the create button.
-    console.log('Add quiz: ', quizToCreate);
+    else{
+      
+      console.log('Add quiz: ', quizToCreate);
+      this.quizService.addQuiz(quizToCreate);
 
-    this.quizService.addQuiz(quizToCreate);
+    }
+
   }
     
 
