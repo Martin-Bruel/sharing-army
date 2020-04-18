@@ -227,6 +227,142 @@
     ],
     "id": 120,
     "quizId": 13
+  },
+  {
+    "label": "Capitale du Portugal",
+    "answers": [
+      {
+        "value": "Lisbonne",
+        "isCorrect": true
+      },
+      {
+        "value": "Madrid",
+        "isCorrect": false
+      },
+      {
+        "value": "Barcelone",
+        "isCorrect": false
+      },
+      {
+        "value": "Dunkerque",
+        "isCorrect": false
+      }
+    ],
+    "id": 1587221864921,
+    "quizId": 1587221740742
+  },
+  {
+    "label": "Capitale de l'Australie",
+    "answers": [
+      {
+        "value": "Sydney",
+        "isCorrect": false
+      },
+      {
+        "value": "Melbourne",
+        "isCorrect": false
+      },
+      {
+        "value": "Canberra",
+        "isCorrect": true
+      },
+      {
+        "value": "Australia",
+        "isCorrect": false
+      }
+    ],
+    "id": 1587222005128,
+    "quizId": 1587221740742
+  },
+  {
+    "label": "Capitale du Brésil",
+    "answers": [
+      {
+        "value": "Rio de Janeiro",
+        "isCorrect": false
+      },
+      {
+        "value": "Brasília",
+        "isCorrect": true
+      },
+      {
+        "value": "São Paulo",
+        "isCorrect": false
+      },
+      {
+        "value": "Salvador",
+        "isCorrect": false
+      }
+    ],
+    "id": 1587222256440,
+    "quizId": 1587221740742
+  },
+  {
+    "label": "Capitale du Japon",
+    "answers": [
+      {
+        "value": "Kyoto",
+        "isCorrect": false
+      },
+      {
+        "value": "Osaka",
+        "isCorrect": false
+      },
+      {
+        "value": "Tokyo",
+        "isCorrect": true
+      },
+      {
+        "value": "Pékin",
+        "isCorrect": false
+      }
+    ],
+    "id": 1587222457883,
+    "quizId": 1587221740742
+  },
+  {
+    "label": "Capitale de la Suisse",
+    "answers": [
+      {
+        "value": "Zurich",
+        "isCorrect": false
+      },
+      {
+        "value": "Genève",
+        "isCorrect": false
+      },
+      {
+        "value": "Berne",
+        "isCorrect": true
+      },
+      {
+        "value": "Bruxelle",
+        "isCorrect": false
+      }
+    ],
+    "id": 1587222665951,
+    "quizId": "1587221740742"
+  },
+  {
+    "label": "Capitale du Botswana",
+    "answers": [
+      {
+        "value": "Yaoundé",
+        "isCorrect": false
+      },
+      {
+        "value": "Luanda",
+        "isCorrect": false
+      },
+      {
+        "value": "Gaborone",
+        "isCorrect": true
+      },
+      {
+        "value": "Kinshasa",
+        "isCorrect": false
+      }
+    ]
   }
+]   
 
-]
