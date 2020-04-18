@@ -17,12 +17,11 @@ export class GameComponent implements OnInit {
   constructor(private route: ActivatedRoute, private gameService: GameService) { 
 
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
-    gameService.createGame(id);
+    gameService.setSelectedGame(id);
     
-    this.gameService.game$.subscribe((game: Game) => {
+    this.gameService.gameSelected$.subscribe((game: Game) => {
       this.game=game;
     })
-
   }
 
   ngOnInit() {
@@ -37,7 +36,6 @@ export class GameComponent implements OnInit {
 
     if(!this.isFinished())
       return this.game.quiz.questions[this.game.step];
-    
   }
 
   isFinished(){

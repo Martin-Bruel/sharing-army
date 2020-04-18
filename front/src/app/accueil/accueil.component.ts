@@ -9,7 +9,5 @@ export class AccueilComponent implements OnInit {
 
  constructor(){}
 
-  ngOnInit() {
-      console.log(" loaded successfully");
-  }
+  ngOnInit(){}
 }

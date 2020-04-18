@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class UserService{
 
     private users : User[] = [];
+
+    private selectedUser;
     
     public users$ : BehaviorSubject<User[]> = new BehaviorSubject(this.users);
 
@@ -22,21 +24,25 @@ export class UserService{
 
     constructor(private http : HttpClient){
         this.setUsersFromUrl();
-        console.log("Constru service");
     }
 
     setUsersFromUrl(){
         this.http.get<User[]>(this.userUrl).subscribe((userList) => {
             this.users = userList;
             this.users$.next(this.users);
-        })
+        });
     }
 
     setSelectedUser(userId : number){
         const urlId = this.userUrl + '/' + userId;
         this.http.get<User>(urlId).subscribe((user)=>{
+            this.selectedUser = user;
             this.userSelected$.next(user);
-        })
+        });
+    }
+
+    getSelectedUser(){
+        return this.selectedUser;
     }
 
     addUser(user : User){
@@ -46,6 +52,6 @@ export class UserService{
 
     updateUser(user : User){
         const urlId = this.userUrl + '/' + sessionStorage.getItem("userId");
-        this.http.put<User>(urlId, user, this.httpOptions).subscribe((user)=>this.userSelected$.next(user));
+        this.http.put<User>(urlId, user, this.httpOptions).subscribe((user)=>this.setSelectedUser(user.id));
     }
 }
