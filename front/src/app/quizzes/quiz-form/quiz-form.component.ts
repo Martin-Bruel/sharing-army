@@ -60,16 +60,23 @@ export class QuizFormComponent implements OnInit {
         }
         this.texte += " thème" ;
       }
-      this.text.emit(this.texte)
+      
     }
+    
     // Do you need to log your object here in your class? Uncomment the code below
     // and open your console in your browser by pressing F12 and choose the tab "Console".
     // You will see your quiz object when you click on the create button.
     else{
+      if (quizToCreate.name.length>20){
+        this.popup.emit("active")
+        this.texte="Le nombre de caractère du titre est supérieur à la limite maximale de 20 caractères "
+        this.text.emit(this.texte)
+      }
+      else{
+        console.log('Add quiz: ', quizToCreate);
+        this.quizService.addQuiz(quizToCreate);
+      }
       
-      console.log('Add quiz: ', quizToCreate);
-      this.quizService.addQuiz(quizToCreate);
-
     }
 
   }
