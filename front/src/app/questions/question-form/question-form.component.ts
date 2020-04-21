@@ -85,15 +85,16 @@ export class QuestionFormComponent implements OnInit {
       }
       if(this.checker){
         question.answers.forEach(element => {
-          if(element.value == ''){
+          if(element.value == '' || element.value.length>60){
             this.popup.emit("active")
-            this.texte = "Des réponses sont vides"
+            this.texte = "Les réponses doivent avoir entre 1 et 60 caractères"
             this.text.emit(this.texte)
             this.checker=false
           }
           if(element.isCorrect){
             this.nbAnswer += 1
           }
+          
         });
       }
       if(this.checker && this.nbAnswer==0){
