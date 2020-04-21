@@ -3,7 +3,7 @@
 
 .question{
     //height: 120px;
-    font-size: 50px;
+    font-size: var(--font);
     //font-weight: bolder;
     line-height: initial;
     margin: 0.5em auto;
@@ -34,7 +34,7 @@
 .button-card{
     padding: 1em 1em;
     background-color: $blue;
-    font-size: 40px;
+    font-size: var(--font);
     border: none;
     width: 600px;
     flex: none;

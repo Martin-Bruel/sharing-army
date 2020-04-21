@@ -26,6 +26,7 @@ export class AppComponent{
         console.log("Color changed",user)
         styles.color = user.setting.color;
         styles.textSize = user.setting.font;
+        document.documentElement.style.setProperty('--font',user.setting.font*3+'%');
         document.documentElement.style.setProperty('--bg',user.setting.color);
     })
   }

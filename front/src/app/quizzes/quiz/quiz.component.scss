@@ -23,6 +23,10 @@ h2 {
     background: linear-gradient(to left,#fff 0,rgba(255,255,255,0) 100%);
 }
 
+.span{
+    font-size: var(--font);
+}
+
 .select, .delete{
     color: $white;
     border: none;
