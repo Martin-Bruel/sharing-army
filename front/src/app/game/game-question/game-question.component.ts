@@ -2,7 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener} from '@an
 import { Question, Answer } from 'src/models/question.model';
 import { Button } from 'protractor';
 import { UserStyles } from 'src/app/user-styles';
-
+import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
+declare function tell(text: any):any;
 
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -51,6 +52,7 @@ export class GameQuestionComponent implements OnInit {
     }
   }
   ngOnInit() {
+    //tell("test");
   }
 
   answerSelected(answer:Answer) {
