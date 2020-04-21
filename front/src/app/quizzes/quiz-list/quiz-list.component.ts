@@ -82,5 +82,5 @@ export class QuizListComponent implements OnInit {
 
   setQuizToDelete( quiz : Quiz){
     this.quizToDelete = quiz
-  }
+  } 
 }
