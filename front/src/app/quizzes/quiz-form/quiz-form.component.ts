@@ -60,9 +60,8 @@ export class QuizFormComponent implements OnInit {
         }
         this.texte += " thème" ;
       }
-      
+      this.text.emit(this.texte)
     }
-    
     // Do you need to log your object here in your class? Uncomment the code below
     // and open your console in your browser by pressing F12 and choose the tab "Console".
     // You will see your quiz object when you click on the create button.

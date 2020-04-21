@@ -11,6 +11,7 @@ import { QuizService } from 'src/services/quiz.service';
 export class EditQuizComponent implements OnInit {
 
   public quiz: Quiz;
+  public textBody : string;
 
   constructor(private route: ActivatedRoute, private quizService: QuizService) { 
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
@@ -20,5 +21,19 @@ export class EditQuizComponent implements OnInit {
     console.log(this.route.snapshot.paramMap.get('id'))
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.quizService.setSelectedQuiz(id);
+  }
+
+  textEdit(text : string){
+    this.textBody = text
+  }
+  openModal( modal : string ) {
+    if (modal == null) return
+    document.getElementById("modal").classList.add(modal)
+    document.getElementById("overlay").classList.add(modal)
+  }
+
+  closeModal() {
+    document.getElementById("modal").classList.remove("active")
+    document.getElementById("overlay").classList.remove("active")
   }
 }

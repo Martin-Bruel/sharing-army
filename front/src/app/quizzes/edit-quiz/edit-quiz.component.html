@@ -1,6 +1,16 @@
 <app-header [titre]="'Edition de Quiz'"></app-header>
 <ng-container *ngIf="quiz">
     <h2>{{quiz.name}}</h2>
-    <app-question-form [quiz]="quiz"></app-question-form>
+    <app-question-form [quiz]="quiz" (popup)="openModal($event)" (text)="textEdit($event)"></app-question-form>
     <app-question-list [quiz]="quiz"></app-question-list>
 </ng-container>
+<div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="title">Erreur</div>
+      <button data-close-button class="close-button" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body">
+        {{textBody}}
+    </div>
+  </div>
+  <div id="overlay"></div>

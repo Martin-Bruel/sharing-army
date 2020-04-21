@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
@@ -14,7 +14,16 @@ export class QuestionFormComponent implements OnInit {
   @Input()
   quiz: Quiz;
 
+  @Output()
+  popup : EventEmitter<string> = new EventEmitter<string>();
+
+  @Output()
+  text : EventEmitter<string> = new EventEmitter<string>();
+
   public questionForm: FormGroup;
+  public texte : string;
+  public checker : boolean;
+  public nbAnswer : number;
 
   constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
     // Form creation
@@ -43,14 +52,62 @@ export class QuestionFormComponent implements OnInit {
   }
 
   addAnswer() {
-    this.answers.push(this.createAnswer());
+    const question = this.questionForm.getRawValue() as Question;
+    if(question.label.length>20){
+        this.popup.emit("active");
+        this.texte = "Le nombre de caractère du titre est supérieur à la limite maximale de 20 caractères "
+        this.text.emit(this.texte)
+      }
+    else{
+      if(question.label.length==0){
+        this.popup.emit("active");
+        this.texte = "Il n'y a pas de question"
+        this.text.emit(this.texte)
+      }
+      else{
+        this.answers.push(this.createAnswer());
+      }
+    }
+    
   }
-
+  
   addQuestion() {
+    this.checker=true;
+    this.nbAnswer=0;
     if(this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
-      this.quizService.addQuestion(this.quiz, question);
-      this.initializeQuestionForm();
+      
+      if(question.answers.length<2){
+        this.popup.emit("active");
+        this.texte = "Il faut au moins 2 questions pour créer un quiz"
+        this.text.emit(this.texte)
+        this.checker=false
+      }
+      if(this.checker){
+        question.answers.forEach(element => {
+          if(element.value == ''){
+            this.popup.emit("active")
+            this.texte = "Des réponses sont vides"
+            this.text.emit(this.texte)
+            this.checker=false
+          }
+          if(element.isCorrect){
+            this.nbAnswer += 1
+          }
+        });
+      }
+      if(this.checker && this.nbAnswer==0){
+        this.popup.emit("active")
+        this.texte = "Il n'y a pas de bonne réponse"
+        this.text.emit(this.texte)
+        this.checker=false
+      }
+
+      if(this.checker){
+          this.quizService.addQuestion(this.quiz, question);
+          this.initializeQuestionForm();
+        }
+      
     }
   }
 }
