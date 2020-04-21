@@ -5,7 +5,7 @@
     <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
-        <app-quiz [quiz]="quiz" (quizSelected)="quizSelected($event)" (quizDeleted)="quizDeleted($event)" (quizEdit)="quizEdit($event)"></app-quiz>
+        <app-quiz [quiz]="quiz"  (quizSelected)="quizSelected($event)" (quizToDeleted)="setQuizToDelete($event)" (quizEdit)="quizEdit($event)" (suppr)="openSupprModal($event)"></app-quiz>
     </div>
   <div class="modal" id="modal">
     <div class="modal-header">
@@ -15,6 +15,17 @@
     <div class="modal-body" id="modal-body">
         {{textBody}}
     </div>
+  </div>
+  <div class="modal" id="suppr">
+    <div class="modal-header">
+      <div class="title">ATTENTION</div>
+      
+    </div>
+    <div class="modal-body" id="modal-body">
+        êtes vous sur de vouloir supprimer ce quiz?
+    </div>
+    <button class="button-card" type="Oui" (click)="quizDeleted()">Oui</button>
+    <button class="button-card" type="Non" (click)="closeSupprModal()">Non</button>
   </div>
   <div id="overlay"></div>
   </div>
