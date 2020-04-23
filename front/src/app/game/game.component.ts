@@ -37,7 +37,7 @@ export class GameComponent implements OnInit {
     if(!this.isFinished()){
 
       if(!this.sameQuestion()){
-        this.t2s();
+        //this.t2s();
         this.onlyOnce=this.game.step;
       }
       return this.game.quiz.questions[this.game.step];

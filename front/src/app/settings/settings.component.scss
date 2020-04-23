@@ -17,6 +17,10 @@
     cursor: pointer;
 }
 
+.slider:focus{
+  outline: 6px solid blue;
+}
+
 .slider::-webkit-slider-thumb{
     appearance: none;
     height: 40px;
@@ -114,11 +118,14 @@ fieldset{
   border-radius: 50%;
 }
 
+
 .valid{
+  border: none;
   cursor: pointer;
   position: fixed;
   text-align: center;
   line-height: initial;
+  width: 50%;
   margin: 45px 25%;
   bottom: 0;
   left: 0;

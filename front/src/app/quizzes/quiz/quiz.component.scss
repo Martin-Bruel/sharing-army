@@ -5,6 +5,15 @@ h2 {
     //box-shadow: 7px 5px black;
     //background-color: #7987d5;
     padding: 5px;
+    font-size: var(--font);
+}
+
+.card{
+    width: var(--width);
+}
+
+.button-card{
+    width: 80%;
 }
 
 .title{
@@ -27,11 +36,18 @@ h2 {
     font-size: var(--font);
 }
 
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .select, .delete{
     color: $white;
     border: none;
-    margin: 10px 50px;
-    font-size: 1em;
+    margin: auto;
+    //font-size: 1em;
+    font-size: var(--font);
 }
 
 .select{

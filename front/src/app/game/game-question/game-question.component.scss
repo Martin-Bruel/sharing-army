@@ -71,13 +71,13 @@
     }
 
     .button-card:nth-child(4)::after{
-        content: "▼";
+        content: "►";
         font-size: 150%;
         margin-left: 20px;
     }
 
     .button-card:nth-child(5)::after{
-        content: "►";
+        content: "▼";
         font-size: 150%;
         margin-left: 20px;
     }

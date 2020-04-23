@@ -21,15 +21,25 @@ export class QuizListComponent implements OnInit {
 
   public quizToDelete : Quiz;
 
+  private fdir : string;
+
+  private falign : string;
+
   constructor(private router: Router, public quizService: QuizService, private gameService : GameService, private styles : UserStyles) {
 
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
+    this.fdir = "row";
+    this.falign = "stretch";
+
+    if(window.matchMedia("(max-width : 1440px)").matches && styles.textSize>=95){
+      this.fdir = "column";
+      this.falign = "center";
+    }
   }
 
   ngOnInit() {
-
   }
 
   quizSelected(quiz: Quiz) {

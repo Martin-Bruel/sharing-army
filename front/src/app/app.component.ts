@@ -28,6 +28,14 @@ export class AppComponent{
         styles.textSize = user.setting.font;
         document.documentElement.style.setProperty('--font',user.setting.font*3+'%');
         document.documentElement.style.setProperty('--bg',user.setting.color);
+        var width : number;
+        const userFont = user.setting.font;
+        if(userFont>=90){
+          width = 800;
+        }else if(userFont>=70){
+          width = 600;
+        } else width = 350;
+        document.documentElement.style.setProperty('--width',width+'px');
     })
   }
 }

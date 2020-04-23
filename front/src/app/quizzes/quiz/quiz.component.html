@@ -5,21 +5,23 @@
         </h2>
     </div>
     
-    <span>
+    <span class="span">
         Thème : {{quiz.theme}}
     </span>
     <br>
-    <span>
+    <span class="span">
         Nombre de questions : {{quiz.questions.length}}
     </span>
     <br>
     <span *ngIf="quiz.date">
         Date : {{quiz.date | date:'medium' }}
     </span>
-    <br>
-    <button class="button-card select" (click)="selectQuiz()">Selectionner</button>
-    <br>
-    <button class="button-card delete" (click)="deleteQuiz(quiz.name)">Supprimer</button>
+    <div class="buttons">
+        <br>
+        <button class="button-card select" (click)="selectQuiz()">Selectionner</button>
+        <br>
+        <button class="button-card delete" (click)="deleteQuiz(quiz.name)">Supprimer</button>
+    </div>
     <h1>{{title}}</h1>
     <nav>
         <a routerLink="/edit-quiz/{{quiz.id}}">Editer</a>
