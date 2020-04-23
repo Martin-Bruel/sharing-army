@@ -36,6 +36,53 @@
     background-color: $blue;
     font-size: var(--font);
     border: none;
-    width: 600px;
+    width: 33%;
     flex: none;
+}
+
+@media screen and (max-width: 1440px){
+    .reponse{
+        justify-content: space-between;
+    }
+    
+    img{
+        display: none;
+    }
+
+    .button-card{
+        width: 45%;
+        margin: 0.5em auto;
+    }
+
+    .button-card:nth-child(1){
+        margin: 0.5em auto;    
+    }
+
+    .button-card:nth-child(1)::after{
+        content: "▲";
+        font-size: 150%;
+        margin-left: 20px;
+    }
+
+    .button-card:nth-child(2)::after{
+        content: "◄";
+        font-size: 150%;
+        margin-left: 20px;
+    }
+
+    .button-card:nth-child(4)::after{
+        content: "▼";
+        font-size: 150%;
+        margin-left: 20px;
+    }
+
+    .button-card:nth-child(5)::after{
+        content: "►";
+        font-size: 150%;
+        margin-left: 20px;
+    }
+
+    .button-card:nth-child(5){
+        margin: 0.5em auto;    
+    }
 }

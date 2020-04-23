@@ -1,22 +1,12 @@
 <div class="title"><img src="assets/logoo.png" width="120px">QuizTalin</div>
 <div class="menu">
-    <div class="menu-bouton">
-        <a routerLink="/quiz-list">
-            <div class="quiz-list box">
-                <div class="content">Mosaïque</div>
-            </div>
-        </a>
-    </div>
-    <div class="menu-bouton">
-        <a routerLink="/settings">
-            <div class="param box">
-                <div class="content">Paramètres</div>
-            </div>
-        </a>
-    </div>
-    <div class="menu-bouton">
-        <div class="history box">
-            <div class="content">Historique</div>
-        </div>
-    </div>
+    <button class="menu-bouton" (click)="list()">
+        <div class="content">Mosaïque</div>
+    </button>
+    <button class="menu-bouton param" (click)="settings()">
+        <div class="content">Paramètres</div>
+    </button>
+    <button class="menu-bouton">
+        <div class="content">Historique</div>
+    </button>
 </div>
