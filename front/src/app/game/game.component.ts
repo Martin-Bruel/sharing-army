@@ -35,26 +35,31 @@ export class GameComponent implements OnInit {
   getCurrentQuestion(){
     
     if(!this.isFinished()){
+
       if(!this.sameQuestion()){
-        var rep=this.game.quiz.questions[this.game.step].answers;
-        var text2="";
-        text2=this.createAnswersText(text2,rep);
-        console.log(rep);
-        var text =this.game.quiz.questions[this.game.step].label;
-        var msg = new SpeechSynthesisUtterance();
-        msg.text=text;
-        msg.lang="fr-FR";
-        window.speechSynthesis.speak(msg);
-        var msg = new SpeechSynthesisUtterance();
-        msg.text=text2;
-        msg.lang="fr-FR";
-        window.speechSynthesis.speak(msg);
+        this.t2s();
         this.onlyOnce=this.game.step;
       }
       return this.game.quiz.questions[this.game.step];
     }
 
     
+  }
+
+  t2s(){
+    var rep=this.game.quiz.questions[this.game.step].answers;
+    var text2="";
+    text2=this.createAnswersText(text2,rep);
+    console.log(rep);
+    var text =this.game.quiz.questions[this.game.step].label;
+    var msg = new SpeechSynthesisUtterance();
+    msg.text=text;
+    msg.lang="fr-FR";
+    window.speechSynthesis.speak(msg);
+    var msg = new SpeechSynthesisUtterance();
+    msg.text=text2;
+    msg.lang="fr-FR";
+    window.speechSynthesis.speak(msg);
   }
 
   createAnswersText(txt:string,list:Answer[]){
