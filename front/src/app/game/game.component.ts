@@ -36,9 +36,17 @@ export class GameComponent implements OnInit {
     
     if(!this.isFinished()){
       if(!this.sameQuestion()){
+        var rep=this.game.quiz.questions[this.game.step].answers;
+        var text2="";
+        text2=this.createAnswersText(text2,rep);
+        console.log(rep);
         var text =this.game.quiz.questions[this.game.step].label;
         var msg = new SpeechSynthesisUtterance();
         msg.text=text;
+        msg.lang="fr-FR";
+        window.speechSynthesis.speak(msg);
+        var msg = new SpeechSynthesisUtterance();
+        msg.text=text2;
         msg.lang="fr-FR";
         window.speechSynthesis.speak(msg);
         this.onlyOnce=this.game.step;
@@ -49,10 +57,21 @@ export class GameComponent implements OnInit {
     
   }
 
+  createAnswersText(txt:string,list:Answer[]){
+    const prefixes=["haut","gauche","droite","bas"];
+    var i=0;
+    //console.log(list);
+    for(i;i<list.length;i++){
+      //console.log(list[i].value);
+      txt=txt+"Réponse "+prefixes[i]+" : "+list[i].value+" . ";
+    }
+    //console.log(txt);
+    return txt;
+  }
   sameQuestion(){
-    console.log(this.game.step);
-    console.log(this.onlyOnce);
-    console.log(this.game.step==this.onlyOnce);
+    //console.log(this.game.step);
+    //console.log(this.onlyOnce);
+    //console.log(this.game.step==this.onlyOnce);
     return this.game.step==this.onlyOnce;
   }
   isFinished(){
