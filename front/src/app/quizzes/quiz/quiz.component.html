@@ -1,26 +1,43 @@
-<div class="card">
+<div class="card" [style.width.px]="width">
     <div class="title">
         <h2>
         {{quiz.name}}
         </h2>
     </div>
-    
-    <span class="span">
+    <table>
+        <tr>
+            <td>
+                Thème
+            </td>
+            <td>
+                : {{quiz.theme}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Questions
+            </td>
+            <td>
+                : {{quiz.questions.length}}
+            </td>
+        </tr>
+    </table>
+    <!-- <span class="span">
         Thème : {{quiz.theme}}
     </span>
     <br>
     <span class="span">
-        Nombre de questions : {{quiz.questions.length}}
-    </span>
+       Questions : {{quiz.questions.length}}
+    </span> -->
     <br>
     <span *ngIf="quiz.date">
         Date : {{quiz.date | date:'medium' }}
     </span>
     <div class="buttons">
         <br>
-        <button class="button-card select" (click)="selectQuiz()">Selectionner</button>
+        <button class="button-card select" (click)="selectQuiz()">Jouer</button>
         <br>
-        <button class="button-card delete" (click)="deleteQuiz(quiz.name)">Supprimer</button>
+        <button class="button-card delete" (click)="deleteQuiz(quiz.name)"><img height="30%" src="assets/delete.png"></button>
     </div>
     <h1>{{title}}</h1>
     <nav>

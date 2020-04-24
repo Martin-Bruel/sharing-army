@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener} from '@angular/core';
 import { Question, Answer } from 'src/models/question.model';
 import { Button } from 'protractor';
-import { UserStyles } from 'src/app/user-styles';
 import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
 
 
@@ -25,7 +24,7 @@ export class GameQuestionComponent implements OnInit {
   @Output()
   answer: EventEmitter<Answer> = new EventEmitter<Answer>();
 
-   constructor(private styles : UserStyles) {
+   constructor() {
   }
   
   @HostListener('window:keyup', ['$event'])

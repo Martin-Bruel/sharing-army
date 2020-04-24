@@ -3,8 +3,8 @@
     Changer la taille des caractères<br>
     <input #slider type="range" min="50" max="100" [value]="getStylesSize()" step="1" class="slider" (input)="changeSize(slider.value)">
     <fieldset>
-        <legend>Taille actuelle : {{styles.textSize}} </legend> 
-        <div class="preview" [style.font-size.px]="styles.textSize">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+        <legend>Taille actuelle : {{size}} </legend> 
+        <div class="preview" [style.font-size.px]="size">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
     </fieldset>
 </div>
 <div class="options">

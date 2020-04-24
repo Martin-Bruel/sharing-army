@@ -12,7 +12,7 @@ export class UserService{
 
     private users : User[] = [];
 
-    private selectedUser;
+    private selectedUser : User;
     
     public users$ : BehaviorSubject<User[]> = new BehaviorSubject(this.users);
 
@@ -38,6 +38,8 @@ export class UserService{
         this.http.get<User>(urlId).subscribe((user)=>{
             this.selectedUser = user;
             this.userSelected$.next(user);
+            sessionStorage.setItem("color",user.setting.color);
+            sessionStorage.setItem("font",user.setting.font.toString());
         });
     }
 

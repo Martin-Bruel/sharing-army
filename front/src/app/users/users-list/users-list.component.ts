@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { User } from 'src/models/user.model';
 import { Router } from '@angular/router';
 import { UserService } from 'src/services/user.service';
-import { UserStyles } from 'src/app/user-styles';
 
 @Component({
     selector: 'users-list',
@@ -14,7 +13,7 @@ export class UserListComponent implements OnInit{
     
     public userList : User[] = [];
 
-    constructor(private router : Router, public userService : UserService, private styles : UserStyles){
+    constructor(private router : Router, public userService : UserService){
         this.userService.users$.subscribe((users) => {
             this.userList = users;
             console.log(this);
@@ -23,12 +22,12 @@ export class UserListComponent implements OnInit{
     
     selectedUser(user : User){
         console.log("User selected",user);
+
         sessionStorage.setItem("userId",user.id.toString());
+
         this.userService.setSelectedUser(user.id);
-        this.styles.color = user.setting.color;
-        console.log("Color",this.styles.color);
-        this.styles.textSize = user.setting.font;
-        console.log("Font Size",this.styles.textSize);
+        console.log("Color",sessionStorage.getItem("color"));
+        console.log("Font Size",sessionStorage.getItem("font"));
         this.router.navigate(['/accueil']);
     }
 

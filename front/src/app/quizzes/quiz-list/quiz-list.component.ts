@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
 import { Router } from '@angular/router';
-import { UserStyles } from '../../user-styles';
 import { GameService } from 'src/services/game.service';
 import { Game } from 'src/models/game.model';
+import { UserService } from 'src/services/user.service';
+import { User } from 'src/models/user.model';
 
 
 
@@ -25,18 +26,29 @@ export class QuizListComponent implements OnInit {
 
   private falign : string;
 
-  constructor(private router: Router, public quizService: QuizService, private gameService : GameService, private styles : UserStyles) {
+  private width : number;
+
+  constructor(private router: Router, public quizService: QuizService, private gameService : GameService) {
 
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
     });
+
     this.fdir = "row";
     this.falign = "stretch";
+    const userFont = +sessionStorage.getItem("font");
 
-    if(window.matchMedia("(max-width : 1440px)").matches && styles.textSize>=95){
+    if(window.matchMedia("(max-width : 1440px)").matches && userFont>=95){
       this.fdir = "column";
       this.falign = "center";
     }
+
+    
+    if(userFont>=90){
+      this.width = 800;
+    }else if(userFont>=70){
+      this.width = 600;
+    } else this.width = 350;
   }
 
   ngOnInit() {

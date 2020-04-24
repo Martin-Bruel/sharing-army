@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserStyles } from '../user-styles';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
 
@@ -12,8 +11,12 @@ export class SettingsComponent implements OnInit{
 
   user : User;
 
-  constructor(private styles : UserStyles, private userService : UserService) {
+  size : number;
+
+  constructor(private userService : UserService) {
     this.user = userService.getSelectedUser();
+    userService.userSelected$.subscribe((user) => this.user = user );
+    this.size = +sessionStorage.getItem("font");
   }
 
   ngOnInit(){
@@ -21,28 +24,27 @@ export class SettingsComponent implements OnInit{
   }
 
   getStylesSize(){
-    return this.styles.textSize;
+    return +sessionStorage.getItem("font");
   }
 
   getStylesColor(){
-    return this.styles.color != '#f2f2f2'
+    return sessionStorage.getItem("color") != '#f2f2f2'
   }
 
 
   changeSize(taille : number){
-    //console.log(taille);
-    this.styles.textSize = taille;
+    this.size = taille;
+    sessionStorage.setItem("font",taille.toString());
   }
 
   changeColor(bool : boolean){
-    //console.log(bool);
-    if(bool) this.styles.color = "#aaaaaa"
-    else this.styles.color = "#f2f2f2"
+    if(bool) sessionStorage.setItem("color","#aaaaaa");
+    else sessionStorage.setItem("color","#f2f2f2");
   }
 
   save(){
-     this.user.setting.font = this.styles.textSize;
-     this.user.setting.color = this.styles.color;
+     this.user.setting.font = +sessionStorage.getItem("font");
+     this.user.setting.color = sessionStorage.getItem("color");
      this.userService.updateUser(this.user);
   }
 }

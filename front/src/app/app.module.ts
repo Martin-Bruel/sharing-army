@@ -25,7 +25,6 @@ import { UserComponent } from './users/user/user.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 
 
-import { UserStyles } from './user-styles';
 import { RouteService } from 'src/services/route.service';
 
 
@@ -57,7 +56,6 @@ import { RouteService } from 'src/services/route.service';
     HttpClientModule,
   ],
   providers: [
-    UserStyles,
     RouteService
   ],
   bootstrap: [AppComponent]
