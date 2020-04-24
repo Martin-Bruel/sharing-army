@@ -2,11 +2,16 @@
 
 .title{
     font-weight: bold;
-    padding-top: 1em;
+    margin-left: 2.5em;
     font-size: 5em;
     text-align: center;
 }
 
+.top-title{
+    margin-top: 2em;
+    display: flex;
+    padding-top: 3em;
+}
 .menu{
     margin-top: 3em;
     display: flex;
@@ -60,3 +65,25 @@ a{
     height: 3rem;
     overflow: hidden;
 }
+
+.bouton-retour{
+    background-color: black;
+    border: none;
+    height: 100%;
+    text-decoration: none;
+    font-size: 2rem;
+    color: $white;
+    padding: 0 40px;
+    margin-left: 20px;
+    transition: background-color 0.2s ease-in-out; 
+  }
+  
+  .bouton-retour:hover{
+    //border: red 4px solid;
+    background-color: orange;
+    cursor: pointer;
+  }
+  
+  .back{
+    width: 100px;
+  }

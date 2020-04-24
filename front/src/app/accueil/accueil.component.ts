@@ -19,4 +19,8 @@ export class AccueilComponent implements OnInit {
   settings(){
     this.router.navigate(['settings']);
   }
+
+  back(){
+    this.router.navigate([''])
+  }
 }
