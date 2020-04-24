@@ -48,7 +48,7 @@ export class UserService{
     }
 
     addUser(user : User){
-        console.log(user);
+        console.log("Adding user",user);
         this.http.post<User>(this.userUrl, user, this.httpOptions).subscribe(() => this.setUsersFromUrl());
     }
 

@@ -16,24 +16,19 @@ export class UserListComponent implements OnInit{
     constructor(private router : Router, public userService : UserService){
         this.userService.users$.subscribe((users) => {
             this.userList = users;
-            console.log(this);
         })
     }
     
     selectedUser(user : User){
         console.log("User selected",user);
-
         sessionStorage.setItem("userId",user.id.toString());
-
         this.userService.setSelectedUser(user.id);
-        console.log("Color",sessionStorage.getItem("color"));
-        console.log("Font Size",sessionStorage.getItem("font"));
         this.router.navigate(['/accueil']);
     }
 
 
     ngOnInit(){
-        console.log("Clearing user data");
+        console.log("Clearing session user data...");
         sessionStorage.clear();
     }
 }

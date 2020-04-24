@@ -38,17 +38,17 @@ export class QuizListComponent implements OnInit {
     this.falign = "stretch";
     const userFont = +sessionStorage.getItem("font");
 
-    if(window.matchMedia("(max-width : 1440px)").matches && userFont>=95){
+    if((window.matchMedia("(max-width : 1440px)").matches && userFont>=90) ||
+    (window.matchMedia("(max-width : 1280px)").matches && userFont>=70)){
       this.fdir = "column";
       this.falign = "center";
     }
 
-    
     if(userFont>=90){
       this.width = 800;
     }else if(userFont>=70){
       this.width = 600;
-    } else this.width = 350;
+    } else this.width = 340;
   }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class QuizListComponent implements OnInit {
 
   quizSelected(quiz: Quiz) {
 
-    console.log('event received from child:', quiz);
+    console.log('Selected Quiz:', quiz);
 
     this.gameService.createGame(quiz);
     this.gameService.gameCreated$.subscribe((game: Game) => {
@@ -65,8 +65,6 @@ export class QuizListComponent implements OnInit {
   }
 
   quizDeleted (){
-
-    console.log('evenet recieved from child', this.quizToDelete);
     document.getElementById("suppr").classList.remove("active")
     document.getElementById("overlay").classList.remove("active")
     this.quizService.deleteQuiz(this.quizToDelete);

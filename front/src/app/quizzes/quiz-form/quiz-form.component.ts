@@ -72,7 +72,7 @@ export class QuizFormComponent implements OnInit {
         this.text.emit(this.texte)
       }
       else{
-        console.log('Add quiz: ', quizToCreate);
+        console.log('Adding quiz: ', quizToCreate);
         this.quizService.addQuiz(quizToCreate);
       }
       

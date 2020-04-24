@@ -1,10 +1,17 @@
 @import '../../styles/variables.scss';
 
+.space{
+  margin-top: 45px;
+}
+
 .options{
-    font-size: 50px;
-    margin: 45px;
-    line-height: initial;
-    white-space: initial;
+  margin: 45px;
+  line-height: initial;
+  white-space: initial;
+}
+
+.titles{
+  font-size: var(--font);
 }
 
 .slider{
@@ -22,41 +29,42 @@
 }
 
 .slider::-webkit-slider-thumb{
-    appearance: none;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background: $blue;
+  appearance: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: $blue;
 }
 
 .slider::-moz-range-thumb{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background: $blue;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: $blue;
 }
 
 fieldset{
-    width: max-content;
-    margin-top: 20px;
-    border: 2px solid black;
+  width: max-content;
+  margin-top: 20px;
+  border: 2px solid black;
 
     //background-color: rgb(209, 209, 209);
 }
 
 .preview{
+    font-size: 20px;
     overflow: hidden;
     white-space: nowrap;
     width: 895px;
     margin: 1px;
 }
 
-.preview:before{
-    content: " ";
-    position: absolute;
-    width: 895px;
-    background-image: linear-gradient(-90deg,#f2f2f2 0px,rgba(255,255,255,0) 10%);
-}
+// .preview:before{
+//     content: " ";
+//     position: absolute;
+//     width: 895px;
+//     background-image: linear-gradient(-90deg,#f2f2f2 0px,rgba(255,255,255,0) 10%);
+// }
 
 .switch{
     position: relative;

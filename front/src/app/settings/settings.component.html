@@ -1,14 +1,14 @@
 <app-header [titre]="'Paramètres'"></app-header>
 <div class="options">
-    Changer la taille des caractères<br>
-    <input #slider type="range" min="50" max="100" [value]="getStylesSize()" step="1" class="slider" (input)="changeSize(slider.value)">
-    <fieldset>
-        <legend>Taille actuelle : {{size}} </legend> 
-        <div class="preview" [style.font-size.px]="size">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+    <span class="titles">Changer la taille des caractères</span><br>
+    <input #slider type="range" min="50" max="100" [value]="getStylesSize()" step="1" class="slider space" (input)="changeSize(slider.value)">
+    <fieldset class="space">
+        <legend class="titles">Taille actuelle : {{size}} </legend>
+        <div class="preview" [style.font-size.%]="rsize">Prévisualisation</div>
     </fieldset>
 </div>
 <div class="options">
-    Assombrir le fond<br>
+    <span class="titles">Assombrir le fond</span><br>
     <label class="switch">
         <input #check type="checkbox" class="checkbox" [checked]="getStylesColor()" (change)="changeColor(check.checked)">
         <span class="check round"></span>

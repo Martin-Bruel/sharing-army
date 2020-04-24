@@ -18,7 +18,7 @@ export class GameHeaderComponent implements OnInit {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log(event);
+    //console.log(event);
 
     if (event.keyCode === KEY_CODE.ESCAPE) {
       var button = document.getElementById("esc");

@@ -13,10 +13,16 @@ export class SettingsComponent implements OnInit{
 
   size : number;
 
+  rsize : number;
+
+  color : string;
+
   constructor(private userService : UserService) {
     this.user = userService.getSelectedUser();
     userService.userSelected$.subscribe((user) => this.user = user );
-    this.size = +sessionStorage.getItem("font");
+    this.size= +sessionStorage.getItem("font");
+    this.rsize = this.size*3;
+    this.color = sessionStorage.getItem("color");
   }
 
   ngOnInit(){
@@ -34,17 +40,17 @@ export class SettingsComponent implements OnInit{
 
   changeSize(taille : number){
     this.size = taille;
-    sessionStorage.setItem("font",taille.toString());
+    this.rsize = this.size*3;
   }
 
   changeColor(bool : boolean){
-    if(bool) sessionStorage.setItem("color","#aaaaaa");
-    else sessionStorage.setItem("color","#f2f2f2");
+    if(bool) this.color = "#aaaaaa"
+    else this.color = "#f2f2f2"
   }
 
   save(){
-     this.user.setting.font = +sessionStorage.getItem("font");
-     this.user.setting.color = sessionStorage.getItem("color");
+     this.user.setting.font = this.size;
+     this.user.setting.color = this.color;
      this.userService.updateUser(this.user);
   }
 }

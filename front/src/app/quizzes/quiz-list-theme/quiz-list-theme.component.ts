@@ -12,6 +12,5 @@ export class QuizListTheme implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("Full route : "+window.location.href);
   }
 }

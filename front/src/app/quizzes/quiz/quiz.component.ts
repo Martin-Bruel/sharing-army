@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
@@ -26,7 +27,7 @@ export class QuizComponent implements OnInit {
   @Output()
   quizToDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-  constructor() {}
+  constructor(private router : Router) {}
 
   ngOnInit() {
   }
@@ -35,10 +36,12 @@ export class QuizComponent implements OnInit {
     this.quizSelected.emit(this.quiz);
   }
 
-
-
   deleteQuiz(name: string) {
     this.suppr.emit("active")
     this.quizToDeleted.emit(this.quiz)
+  }
+
+  editQuiz(){
+    this.router.navigate(['edit-quiz',this.quiz.id]);
   }
 }
