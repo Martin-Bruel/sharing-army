@@ -1,0 +1,65 @@
+@import "./card.scss";
+
+h2 {
+    padding: 5px;
+    font-size: var(--font);
+    line-height: 1em;
+}
+
+.button-card, .buttons-del-ed{
+    width: 80%;
+}
+
+.title{
+    //overflow: hidden;
+    white-space: normal;
+}
+
+// .title::after{
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     height: 100%;
+//     width: 4em;
+//     background: linear-gradient(to left,#fff 0,rgba(255,255,255,0) 100%);
+// }
+
+.span{
+    line-height: initial;
+    font-size: var(--font);
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select, .delete, .edit{
+    color: $white;
+    border: none;
+    margin: 0;
+    //font-size: 1em;
+    font-size: var(--font);
+}
+
+.select{
+    background-color: green;
+}
+
+.buttons-del-ed{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete{
+    width: 45%;
+    background-color: red;
+}
+
+.edit{
+    width: 45%;
+    background-color: $blue;
+}

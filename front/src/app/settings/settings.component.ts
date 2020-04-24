@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'settings',
@@ -15,14 +16,18 @@ export class SettingsComponent implements OnInit{
 
   rsize : number;
 
+  width : number;
+
   color : string;
 
-  constructor(private userService : UserService) {
+  constructor(private userService : UserService, private router : Router) {   
+ 
     this.user = userService.getSelectedUser();
-    userService.userSelected$.subscribe((user) => this.user = user );
+    userService.userSelected$.subscribe((user) => this.user = user);
     this.size= +sessionStorage.getItem("font");
     this.rsize = this.size*3;
     this.color = sessionStorage.getItem("color");
+    this.changeWidth();
   }
 
   ngOnInit(){
@@ -37,10 +42,18 @@ export class SettingsComponent implements OnInit{
     return sessionStorage.getItem("color") != '#f2f2f2'
   }
 
-
   changeSize(taille : number){
     this.size = taille;
     this.rsize = this.size*3;
+    this.changeWidth();
+  }
+
+  changeWidth(){
+    if(this.size>=90){
+      this.width = 800;
+    }else if(this.size>=70){
+      this.width = 600;
+    } else this.width = 340;
   }
 
   changeColor(bool : boolean){
@@ -49,8 +62,8 @@ export class SettingsComponent implements OnInit{
   }
 
   save(){
-     this.user.setting.font = this.size;
-     this.user.setting.color = this.color;
-     this.userService.updateUser(this.user);
+    this.user.setting.font = this.size;
+    this.user.setting.color = this.color;
+    this.userService.updateUser(this.user);
   }
 }

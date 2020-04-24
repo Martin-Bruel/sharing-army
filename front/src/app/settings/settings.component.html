@@ -1,10 +1,36 @@
 <app-header [titre]="'Paramètres'"></app-header>
 <div class="options">
-    <span class="titles">Changer la taille des caractères</span><br>
+    <span class="titles">Changer la taille</span><br>
     <input #slider type="range" min="50" max="100" [value]="getStylesSize()" step="1" class="slider space" (input)="changeSize(slider.value)">
     <fieldset class="space">
         <legend class="titles">Taille actuelle : {{size}} </legend>
-        <div class="preview" [style.font-size.%]="rsize">Prévisualisation</div>
+        <!-- <div class="preview" [style.font-size.%]="rsize">Prévisualisation</div> -->
+        <div class="preview-quiz" id="preview-quiz">
+            <div class="card" [style.width.px]="width">
+                <div class="title">
+                    <h2 [style.font-size.%]="rsize">
+                    Nom du Quiz
+                    </h2>
+                </div>
+                <span class="span" [style.font-size.%]="rsize">
+                    Thème : Autre
+                </span>
+                <br>
+                <span class="span" [style.font-size.%]="rsize">
+                   Questions : 7
+                </span>
+                <br>
+                <div class="buttons">
+                    <br>
+                    <button class="button-card select" [style.font-size.%]="rsize">Jouer</button>
+                    <br>
+                    <div class="buttons-del-ed">
+                        <button class="button-card delete" [style.font-size.%]="rsize"><img width="100%" src="assets/delete.png"></button>
+                        <button class="button-card edit" [style.font-size.%]="rsize"><img width="100%" src="assets/edit.png"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </fieldset>
 </div>
 <div class="options">
