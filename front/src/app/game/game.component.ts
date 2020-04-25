@@ -56,11 +56,14 @@ export class GameComponent implements OnInit {
   }
 
   t2s(txt:string){
-
-    var msg = new SpeechSynthesisUtterance();
-    msg.text=txt;
-    msg.lang="fr-FR";
-    window.speechSynthesis.speak(msg);
+    console.log(sessionStorage.getItem("t2sOn"))
+    //console.log(sessionStorage.getItem("t2sOn")=="true");
+    if(sessionStorage.getItem("t2sOn")=="true"){
+      var msg = new SpeechSynthesisUtterance();
+      msg.text=txt;
+      msg.lang="fr-FR";
+      window.speechSynthesis.speak(msg);
+    }
   }
 
   createAnswersText(txt:string,list:Answer[]){

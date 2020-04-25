@@ -1,7 +1,8 @@
 export interface Setting{
     userId : number,
     color : string,
-    font : number
+    font : number,
+    t2sOn : boolean
 }
 
 export interface User{
