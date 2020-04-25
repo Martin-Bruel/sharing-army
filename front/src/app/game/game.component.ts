@@ -28,7 +28,9 @@ export class GameComponent implements OnInit {
   }
 
   answerSelected(answer:Answer){
-
+    if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+    }
     this.gameService.addAnswer(answer);
   }
 
@@ -37,7 +39,12 @@ export class GameComponent implements OnInit {
     if(!this.isFinished()){
 
       if(!this.sameQuestion()){
-        //this.t2s();
+        var rep=this.game.quiz.questions[this.game.step].answers;
+        var text2="";
+        text2=this.createAnswersText(text2,rep);
+        var text =this.game.quiz.questions[this.game.step].label;
+        this.t2s(text);
+        this.t2s(text2);
         this.onlyOnce=this.game.step;
       }
       return this.game.quiz.questions[this.game.step];
@@ -46,18 +53,10 @@ export class GameComponent implements OnInit {
     
   }
 
-  t2s(){
-    var rep=this.game.quiz.questions[this.game.step].answers;
-    var text2="";
-    text2=this.createAnswersText(text2,rep);
-    console.log(rep);
-    var text =this.game.quiz.questions[this.game.step].label;
+  t2s(txt:string){
+
     var msg = new SpeechSynthesisUtterance();
-    msg.text=text;
-    msg.lang="fr-FR";
-    window.speechSynthesis.speak(msg);
-    var msg = new SpeechSynthesisUtterance();
-    msg.text=text2;
+    msg.text=txt;
     msg.lang="fr-FR";
     window.speechSynthesis.speak(msg);
   }
@@ -85,6 +84,9 @@ export class GameComponent implements OnInit {
   }
 
   deleteGame(){
+    if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+    }
     this.gameService.deleteGame();
   }
 }
