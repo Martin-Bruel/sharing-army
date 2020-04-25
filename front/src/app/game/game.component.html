@@ -15,12 +15,7 @@
         <app-game-question  [question]="getCurrentQuestion()" (answer)="answerSelected($event)"></app-game-question> 
     </div>
     <div *ngIf="isFinished()">
-        <div class="info">
-            <h2 class="question">        
-                Vous avez {{game.rightAnswer}} bonne reponse sur {{game.quiz.questions.length}} questions
-            </h2>
-        </div>
-        <button class="button-card valider" (click)="deleteGame()" routerLink="/quiz-list">Valider</button>
+        <app-game-result [game]="game" (delete)="deleteGame()"></app-game-result>
     </div>
 </div>
 

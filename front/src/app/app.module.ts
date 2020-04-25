@@ -26,6 +26,7 @@ import { UserFormComponent } from './users/user-form/user-form.component';
 
 
 import { RouteService } from 'src/services/route.service';
+import { GameResultComponent } from './game/game-result/game-result.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { RouteService } from 'src/services/route.service';
     SettingsComponent,
     GameQuestionComponent,
     GameHeaderComponent,
+    GameResultComponent,
     UserListComponent,
     UserComponent,
     UserFormComponent

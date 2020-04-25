@@ -33,9 +33,6 @@ export class GameHeaderComponent implements OnInit {
   
   @HostListener('window:beforeunload', ['$event'])
   onWindowClose(event) {
-
-      this.delete.emit();
-      event.returnValue = false;
  }
 
   
