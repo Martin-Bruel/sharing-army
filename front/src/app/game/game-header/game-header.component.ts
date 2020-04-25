@@ -39,7 +39,11 @@ export class GameHeaderComponent implements OnInit {
 
   
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    if(sessionStorage.getItem("t2sOn")=="false"){
+      this.image = "assets/nospeaker.png"
+    }
+   }
 
 
   ngOnInit() {
