@@ -17,6 +17,7 @@ export class UserListComponent implements OnInit{
         this.userService.users$.subscribe((users) => {
             this.userList = users;
         })
+        document.documentElement.style.setProperty('--bg',"#f2f2f2");
     }
     
     selectedUser(user : User){
