@@ -12,8 +12,17 @@ export class QuestionListComponent implements OnInit {
   
   @Input()
   quiz: Quiz;
+
+  questionWidth: number = 50;
   
-  constructor(private quizService: QuizService) { }
+  fdir: string = "row";
+  
+  constructor(private quizService: QuizService) {
+    if(+sessionStorage.getItem("font")>=75){
+      this.questionWidth = 90;
+      this.fdir = "column";
+    }
+   }
 
   ngOnInit() {
   }

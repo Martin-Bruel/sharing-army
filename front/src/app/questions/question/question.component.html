@@ -1,9 +1,10 @@
-<div class="card">
+<div class="card" [style.width.%]="width">
     <h2>
         <i class="fab fa-leanpub"></i>
         {{question.label}}
     </h2>
-    <div class="answer span" *ngFor="let answer of question.answers; let i=index">
+    <div class="answer span" *ngFor="let answer of question.answers; let i=index" [ngStyle]="{'background-color':answer.isCorrect ? '#adebad' : ''}">
+        <!-- #80ff80 -->
         {{i}} - {{answer.value}} <ng-container *ngIf="answer.isCorrect"><i class="far fa-check-square"></i></ng-container> <br>
     </div>
     <div class="br"></div>

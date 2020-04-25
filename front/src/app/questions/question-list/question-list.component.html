@@ -1,5 +1,5 @@
-<div class="question-list">
-    <div class="question" *ngFor="let question of quiz.questions">
+<div class="question-list" [ngStyle]="{'flex-direction': fdir}">
+    <div class="question" *ngFor="let question of quiz.questions" [style.width.%]="questionWidth">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->
         <app-question [question]="question" (deleteQuestion)="deleteQuestion($event)"></app-question>
