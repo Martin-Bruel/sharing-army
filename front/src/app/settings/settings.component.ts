@@ -62,6 +62,7 @@ export class SettingsComponent implements OnInit{
   }
 
   save(){
+    window.scrollTo(0,0);
     this.user.setting.font = this.size;
     this.user.setting.color = this.color;
     this.userService.updateUser(this.user);
