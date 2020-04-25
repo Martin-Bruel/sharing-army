@@ -16,6 +16,8 @@ export class GameHeaderComponent implements OnInit {
   @Output() 
   delete: EventEmitter<any> = new EventEmitter();
 
+  private image = "assets/speaker.png";
+
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     //console.log(event);
@@ -54,10 +56,12 @@ export class GameHeaderComponent implements OnInit {
         speechSynthesis.pause();
       }
       sessionStorage.setItem("t2sOn","false");
+      this.image = "assets/nospeaker.png"
     }
     else{
       speechSynthesis.resume();
       sessionStorage.setItem("t2sOn","true");
+      this.image = "assets/speaker.png"
     }
   }
 }
