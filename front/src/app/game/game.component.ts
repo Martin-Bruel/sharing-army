@@ -13,9 +13,11 @@ import { QuestionComponent } from '../questions/question/question.component';
 export class GameComponent implements OnInit {
   game: Game;
   onlyOnce : Number;
+  onlyOnce2 : Number;
   
   constructor(private route: ActivatedRoute, private gameService: GameService) { 
     this.onlyOnce=-1;
+    this.onlyOnce2=-1;
     const id = parseInt(this.route.snapshot.paramMap.get('id'));
     gameService.setSelectedGame(id);
     
@@ -79,8 +81,13 @@ export class GameComponent implements OnInit {
     return this.game.step==this.onlyOnce;
   }
   isFinished(){
-
-    return this.game.step >= this.game.quiz.questions.length;
+    var b=this.game.step >= this.game.quiz.questions.length;
+    if(b && this.onlyOnce2!=this.onlyOnce){
+      var txt = "Vous avez"+ this.game.rightAnswer +"bonne reponse sur" + this.game.quiz.questions.length +"questions.";
+      this.t2s(txt);
+      this.onlyOnce2=this.onlyOnce;
+    }
+    return b;
   }
 
   deleteGame(){
