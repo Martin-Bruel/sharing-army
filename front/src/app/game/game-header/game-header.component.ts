@@ -47,4 +47,17 @@ export class GameHeaderComponent implements OnInit {
     this.delete.emit();
     this.router.navigate(['/quiz-list']);
   }
+
+  changeBool(){
+    if (sessionStorage.getItem("t2sOn")=="true"){
+      if(speechSynthesis.speaking){
+        speechSynthesis.pause();
+      }
+      sessionStorage.setItem("t2sOn","false");
+    }
+    else{
+      speechSynthesis.resume();
+      sessionStorage.setItem("t2sOn","true");
+    }
+  }
 }

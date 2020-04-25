@@ -1,1 +1,10 @@
-@import '../../../styles/card.scss';
+@import '../../../styles/quiz-box.scss';
+
+.card{
+    width: max-content;
+}
+
+.button-card{
+    padding: 0.2em 0.4em;
+    width: 50%;
+}

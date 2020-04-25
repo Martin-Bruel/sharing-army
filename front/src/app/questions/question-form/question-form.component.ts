@@ -53,9 +53,9 @@ export class QuestionFormComponent implements OnInit {
 
   addAnswer() {
     const question = this.questionForm.getRawValue() as Question;
-    if(question.label.length>20){
+    if(question.label.length>40){
         this.popup.emit("active");
-        this.texte = "Le nombre de caractère du titre est supérieur à la limite maximale de 20 caractères "
+        this.texte = "Le nombre de caractère du titre est supérieur à la limite maximale de 40 caractères "
         this.text.emit(this.texte)
       }
     else{

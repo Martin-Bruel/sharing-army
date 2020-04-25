@@ -1,5 +1,10 @@
 @import "../../styles.scss";
 
+.inactive{
+    pointer-events: none;
+    filter: brightness(50%);
+}
+
 .title{
     font-weight: bold;
     margin-left: 2.5em;

@@ -12,8 +12,8 @@ import { QuestionComponent } from '../questions/question/question.component';
 })
 export class GameComponent implements OnInit {
   game: Game;
-  onlyOnce : Number;
-  onlyOnce2 : Number;
+  onlyOnce : number;
+  onlyOnce2 : number;
   
   constructor(private route: ActivatedRoute, private gameService: GameService) { 
     this.onlyOnce=-1;
@@ -56,14 +56,17 @@ export class GameComponent implements OnInit {
   }
 
   t2s(txt:string){
+    if(sessionStorage.getItem("t2sOn")=="false"){
+      if(!speechSynthesis.paused){
+      speechSynthesis.pause();
+      }
+    }
     console.log(sessionStorage.getItem("t2sOn"))
     //console.log(sessionStorage.getItem("t2sOn")=="true");
-    if(sessionStorage.getItem("t2sOn")=="true"){
-      var msg = new SpeechSynthesisUtterance();
-      msg.text=txt;
-      msg.lang="fr-FR";
-      window.speechSynthesis.speak(msg);
-    }
+    var msg = new SpeechSynthesisUtterance();
+    msg.text=txt;
+    msg.lang="fr-FR";
+    window.speechSynthesis.speak(msg);
   }
 
   createAnswersText(txt:string,list:Answer[]){
@@ -82,6 +85,9 @@ export class GameComponent implements OnInit {
     //console.log(this.onlyOnce);
     //console.log(this.game.step==this.onlyOnce);
     return this.game.step==this.onlyOnce;
+  }
+  repeatQuestion(){
+    this.onlyOnce-=1;
   }
   isFinished(){
     var b=this.game.step >= this.game.quiz.questions.length;
