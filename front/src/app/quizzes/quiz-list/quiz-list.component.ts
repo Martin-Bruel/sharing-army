@@ -26,6 +26,8 @@ export class QuizListComponent implements OnInit {
 
   private falign : string;
 
+  private fjust : string;
+
   private width : number;
 
   constructor(private router: Router, public quizService: QuizService, private gameService : GameService) {
@@ -36,17 +38,24 @@ export class QuizListComponent implements OnInit {
 
     this.fdir = "row";
     this.falign = "stretch";
+    this.fjust = "";
+
     const userFont = +sessionStorage.getItem("font");
 
     if((window.matchMedia("(max-width : 1440px)").matches && userFont>=90) ||
-    (window.matchMedia("(max-width : 1280px)").matches && userFont>=70)){
+    (window.matchMedia("(max-width : 1280px)").matches && userFont>=75)){
       this.fdir = "column";
       this.falign = "center";
+    } else if((window.matchMedia("(max-width : 1680px)").matches || window.matchMedia("(max-width : 1920px)").matches)
+     && userFont>=75){
+      this.fjust = "space-around"
     }
+
+
 
     if(userFont>=90){
       this.width = 800;
-    }else if(userFont>=70){
+    }else if(userFont>=75){
       this.width = 600;
     } else this.width = 340;
   }

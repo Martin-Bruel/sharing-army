@@ -1,7 +1,7 @@
 
 <app-header [titre]="'Liste de Quiz'"></app-header>
 <app-quiz-form (popup)="openModal($event)" (text)="textEdit($event)"></app-quiz-form>
-<div class="quiz-list" [ngStyle]="{'flex-direction': fdir, 'align-items': falign}">
+<div class="quiz-list" [ngStyle]="{'flex-direction': fdir, 'align-items': falign, 'justify-content': fjust}">
     <div class="quiz" *ngFor="let quiz of quizList">
         <!--Inputs & Output allow communication between parent & child components.-->
         <!--More information: https://angular.io/guide/component-interaction-->

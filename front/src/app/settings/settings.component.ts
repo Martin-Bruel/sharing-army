@@ -51,7 +51,7 @@ export class SettingsComponent implements OnInit{
   changeWidth(){
     if(this.size>=90){
       this.width = 800;
-    }else if(this.size>=70){
+    }else if(this.size>=75){
       this.width = 600;
     } else this.width = 340;
   }

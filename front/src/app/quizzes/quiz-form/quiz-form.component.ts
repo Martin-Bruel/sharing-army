@@ -28,7 +28,7 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
   public THEME_LIST: string[] = ['Sport', 'Actor', 'Géographie', 'Autre'];
-  public quizListComponent :QuizListComponent;
+  //public quizListComponent :QuizListComponent;
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
     // Form creation
@@ -62,9 +62,8 @@ export class QuizFormComponent implements OnInit {
       }
       this.text.emit(this.texte)
     }
-    // Do you need to log your object here in your class? Uncomment the code below
-    // and open your console in your browser by pressing F12 and choose the tab "Console".
-    // You will see your quiz object when you click on the create button.
+
+    
     else{
       if (quizToCreate.name.length>20){
         this.popup.emit("active")
