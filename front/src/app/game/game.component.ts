@@ -30,7 +30,7 @@ export class GameComponent implements OnInit {
   }
 
   answerSelected(answer:Answer){
-    if(speechSynthesis.speaking){
+    if(speechSynthesis.speaking || speechSynthesis.paused){
       speechSynthesis.cancel();
     }
     this.gameService.addAnswer(answer);
@@ -92,7 +92,7 @@ export class GameComponent implements OnInit {
   isFinished(){
     var b=this.game.step >= this.game.quiz.questions.length;
     if(b && this.onlyOnce2!=this.onlyOnce){
-      var txt = "Vous avez"+ this.game.rightAnswer +"bonne reponse sur" + this.game.quiz.questions.length +"questions.";
+      var txt = "Vous avez"+ this.game.rightAnswer +"bonne reponse sur" + this.game.quiz.questions.length +"questions .";
       this.t2s(txt);
       this.onlyOnce2=this.onlyOnce;
     }
