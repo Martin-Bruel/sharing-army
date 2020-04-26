@@ -58,10 +58,10 @@ export class GameService {
 
     const urlWithId = this.gameUrl + '/' + this.game.id;
     this.game.answersSelected.push(answer);
+    if(answer.isCorrect)
+      this.game.rightAnswer++;
     this.http.put<Game>(urlWithId, this.game, this.httpOptions).subscribe((game) => {
       this.game = game;
-      if(answer.isCorrect)
-        this.game.rightAnswer++;
       this.gameSelected$.next(this.game);
     })
   }

@@ -5,7 +5,13 @@
 </div>
 <div class="circle">
     {{game.rightAnswer}} / {{game.quiz.questions.length}}
+    
 </div>
+<div *ngFor = "let answer of game.answersSelected ; let i = index">
+    <li> {{recap(i)}} {{recap2(i)}} {{recap3(i)}}</li>
+    
+</div>
+
 <div class="button">
     <button class="button-card" (click)="retry()">Réessayer</button>
     <button class="button-card" (click)="back()">Retour à la sélection</button>

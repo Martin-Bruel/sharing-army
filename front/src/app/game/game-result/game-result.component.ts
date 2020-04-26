@@ -16,9 +16,33 @@ export class GameResultComponent implements OnInit {
     @Output() 
     delete: EventEmitter<any> = new EventEmitter();
 
+    public recapitulatif : String
+
     ngOnInit() {}
 
-    constructor(private router: Router, private gameService: GameService){}
+    constructor(private router: Router, private gameService: GameService){
+        
+    }
+
+
+    recap(index){
+        var question = this.game.quiz.questions[index];
+        var answer = this.game.answersSelected[index]
+        return question.label;
+    }
+    recap2(index){
+        var question = this.game.quiz.questions[index];
+        var answer = this.game.answersSelected[index]
+        return  answer.value 
+    }
+    recap3(index){
+        var question = this.game.quiz.questions[index];
+        var answer = this.game.answersSelected[index]
+        if(answer.isCorrect){
+            return "vrai"
+        }
+        return "faux";
+    }
 
     getMessageResult(){
 
