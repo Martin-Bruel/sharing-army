@@ -12,9 +12,15 @@ export class EditQuizComponent implements OnInit {
 
   public quiz: Quiz;
   public textBody : string;
+  private questionWidth : number = 50;
+  private fdir = "row";
 
   constructor(private route: ActivatedRoute, private quizService: QuizService) { 
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+    if(+sessionStorage.getItem("font")>=75){
+      this.questionWidth = 90;
+      this.fdir = "column";
+    }
   }
 
   ngOnInit() {

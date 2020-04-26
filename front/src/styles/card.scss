@@ -1,6 +1,11 @@
 @import "./variables";
 
 
+.span{
+  line-height: initial;
+  font-size: var(--font);
+}
+
 h2{
   padding: 5px;
   font-size: var(--font);

@@ -14,6 +14,9 @@ export class QuestionFormComponent implements OnInit {
   @Input()
   quiz: Quiz;
 
+  @Input()
+  cardWidth : number
+
   @Output()
   popup : EventEmitter<string> = new EventEmitter<string>();
 

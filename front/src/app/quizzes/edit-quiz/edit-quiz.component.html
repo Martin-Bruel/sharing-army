@@ -4,8 +4,8 @@
     <h2>Titre : {{quiz.name}}</h2>
     <h2>Nombre de questions : {{quiz.questions.length}}</h2>
   </div>
-    <app-question-form [quiz]="quiz" (popup)="openModal($event)" (text)="textEdit($event)"></app-question-form>
-    <app-question-list [quiz]="quiz"></app-question-list>
+    <app-question-form [cardWidth]="questionWidth" [quiz]="quiz" (popup)="openModal($event)" (text)="textEdit($event)"></app-question-form>
+    <app-question-list [questionWidth]="questionWidth" [fdir]="fdir" [quiz]="quiz"></app-question-list>
 </ng-container>
 <div class="modal" id="modal">
     <div class="modal-header">

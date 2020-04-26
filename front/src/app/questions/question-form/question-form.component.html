@@ -1,28 +1,29 @@
-<div class="card">
-  <h2>Créer une nouvelle question</h2>
-  <form class="quiz-form" [formGroup]="questionForm">
-    <label for="label">
-      Question <br>
-      <input class="input-custom" type="text" id="label" [formControlName]="'label'">
-    </label>
-    <br>
-    <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
-    <div class="answer" formArrayName="answers">
-      <div *ngFor="let address of answers.controls; let i=index">
-        <div class="answer-form" [formGroupName]="i">
-          <label>
-            Réponse
-            <input type="text" [formControlName]="'value'">
-            <br>
-            Correcte
-            <input type="checkbox" [formControlName]="'isCorrect'">
-          </label>
+<div class="question-form">
+  <div class="card" [style.width.%]="cardWidth">
+    <h2>Créer une nouvelle question</h2>
+    <form class="quiz-form" [formGroup]="questionForm">
+      <label for="label">
+        <span class="span">Saisir une question</span><br>
+        <input class="input-custom" type="text" id="label" [formControlName]="'label'">
+      </label>
+      <br>
+      <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
+      <div class="answer" formArrayName="answers">
+        <div *ngFor="let address of answers.controls; let i=index">
+          <div class="answer-form" [formGroupName]="i">
+            <label>
+              <span class="span">Réponse</span>         
+              <input type="text" [formControlName]="'value'">
+              <br>
+              <span class="span">Correcte</span>
+              <input type="checkbox" [formControlName]="'isCorrect'">
+            </label>
+          </div>
         </div>
       </div>
-    </div>
-    <button type="submit" class="button-card" (click)="addQuestion()">Créer</button>
-  </form>
+      <button type="submit" class="button-card" (click)="addQuestion()">Créer</button>
+    </form>
+  </div>
+  <!-- Uncomment below to see your form structure and how it changes-->
+  <!-- <br><br>{{quizForm.getRawValue() | json}} -->
 </div>
-
-<!-- Uncomment below to see your form structure and how it changes-->
-<!-- <br><br>{{quizForm.getRawValue() | json}} -->
