@@ -1,6 +1,9 @@
 <app-header [titre]="'Edition de Quiz'"></app-header>
 <ng-container *ngIf="quiz">
-    <h2>{{quiz.name}}</h2>
+  <div class="quiz-infos">
+    <h2>Titre : {{quiz.name}}</h2>
+    <h2>Nombre de questions : {{quiz.questions.length}}</h2>
+  </div>
     <app-question-form [quiz]="quiz" (popup)="openModal($event)" (text)="textEdit($event)"></app-question-form>
     <app-question-list [quiz]="quiz"></app-question-list>
 </ng-container>

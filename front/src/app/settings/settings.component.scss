@@ -127,20 +127,9 @@ fieldset{
   border-radius: 50%;
 }
 
-
 .valid{
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  line-height: initial;
   width: 50%;
   margin: 45px 25%;
   padding: 25px;
-  font-size: 50px;
   background-color: green;
-  transition: background-color 0.2s ease-in-out; 
-}
-
-.valid:hover{
-  background-color: orange;
 }

@@ -51,8 +51,6 @@ export class QuizListComponent implements OnInit {
       this.fjust = "space-around"
     }
 
-
-
     if(userFont>=90){
       this.width = 800;
     }else if(userFont>=75){
