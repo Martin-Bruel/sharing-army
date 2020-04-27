@@ -1,0 +1,15 @@
+<div class="popup">
+    <div class="popup-body">
+        <div class="title">
+            <h2>Erreur</h2>
+        </div>
+        <span class="span">{{info}}</span>
+    
+        <div class="button">
+            <button *ngIf="buttonTrue != null" class="button-card" (click)="close(true)">{{buttonTrue}}</button>
+            <button *ngIf="buttonFalse != null" class="button-card" (click)="close(false)">{{buttonFalse}}</button>
+        </div>
+    </div>
+</div>
+<div class="popup-background"></div>
+

@@ -20,8 +20,6 @@ export class QuizListComponent implements OnInit {
 
   public textBody : string;
 
-  public quizToDelete : Quiz;
-
   private fdir : string;
 
   private falign : string;
@@ -71,43 +69,15 @@ export class QuizListComponent implements OnInit {
     })
   }
 
-  quizDeleted (){
-    document.getElementById("suppr").classList.remove("active")
-    document.getElementById("overlay").classList.remove("active")
-    this.quizService.deleteQuiz(this.quizToDelete);
+  quizDeleted(quiz : Quiz){
+    this.quizService.deleteQuiz(quiz);
   }
 
   quizEdit(quiz: Quiz) {
     this.router.navigate(['/edit-quiz/'+ quiz.name]);
   }
 
-  openModal( modal : string ) {
-    if (modal == null) return
-    document.getElementById("modal").classList.add(modal)
-    document.getElementById("overlay").classList.add(modal)
-  }
-  
-  closeModal() {
-    document.getElementById("modal").classList.remove("active")
-    document.getElementById("overlay").classList.remove("active")
-  }
-
   textEdit(text : string){
     this.textBody = text
   }
-
-  openSupprModal( modal : string ) {
-    if (modal == null) return
-    document.getElementById("suppr").classList.add(modal)
-    document.getElementById("overlay").classList.add(modal)
-  }
-
-  closeSupprModal() {
-    document.getElementById("suppr").classList.remove("active")
-    document.getElementById("overlay").classList.remove("active")
-  }
-
-  setQuizToDelete( quiz : Quiz){
-    this.quizToDelete = quiz
-  } 
 }

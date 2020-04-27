@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from '../../../models/quiz.model';
 import { QuizListComponent } from '../quiz-list/quiz-list.component';
+import { PopupService } from 'src/services/popup.service';
 
 
 
@@ -17,11 +18,6 @@ import { QuizListComponent } from '../quiz-list/quiz-list.component';
 export class QuizFormComponent implements OnInit {
   // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
   // avoid TemplateDrivenForm (another type of form)
-  @Output()
-  popup : EventEmitter<string> = new EventEmitter<string>();
-
-  @Output()
-  text : EventEmitter<string> = new EventEmitter<string>();
   /**
    * QuizForm: Object which manages the form in our component.
    * More information about Reactive Forms: https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance
@@ -30,7 +26,7 @@ export class QuizFormComponent implements OnInit {
   public THEME_LIST: string[] = ['Sport', 'Actor', 'Géographie', 'Autre'];
   //public quizListComponent :QuizListComponent;
 
-  constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
+  constructor(public formBuilder: FormBuilder, public quizService: QuizService, private popupService : PopupService) {
     // Form creation
     this.quizForm = this.formBuilder.group({
       name: [''],
@@ -48,37 +44,34 @@ export class QuizFormComponent implements OnInit {
     // We retrieve here the quiz object.rom the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
 
+    
     if (quizToCreate.name == '' || quizToCreate.theme == ''){
-      this.popup.emit("active")
-      this.texte = "Il n'y a pas de";
+
+      var text = "Il n'y a pas de";
       if (quizToCreate.name == ''){
-        this.texte += " titre" ;
+        text += " titre" ;
       }
       if (quizToCreate.theme == ''){
         if (quizToCreate.name == ''){
-          this.texte += " et de" ;
+          text += " et de" ;
         }
-        this.texte += " thème" ;
+        text += " thème" ;
       }
-      this.text.emit(this.texte)
+
+      this.popupService.open(text, 'OK');
     }
 
     
     else{
       if (quizToCreate.name.length>20){
-        this.popup.emit("active")
-        this.texte="Le nombre de caractère du titre est supérieur à la limite maximale de 20 caractères "
-        this.text.emit(this.texte)
+        var text="Le nombre de caractère du titre est supérieur à la limite maximale de 20 caractères "
+
+        this.popupService.open('popup', text, 'OK');
       }
       else{
         console.log('Adding quiz: ', quizToCreate);
         this.quizService.addQuiz(quizToCreate);
-      }
-      
+      }      
     }
-
   }
-    
-
-
 }

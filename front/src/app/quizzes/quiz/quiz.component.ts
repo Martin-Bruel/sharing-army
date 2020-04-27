@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Quiz } from '../../../models/quiz.model';
 import { Router } from '@angular/router';
+import { PopupService } from 'src/services/popup.service';
 
 @Component({
   selector: 'app-quiz',
@@ -21,13 +22,7 @@ export class QuizComponent implements OnInit {
   @Output()
   quizDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
 
-  @Output()
-  suppr: EventEmitter<string> = new EventEmitter<string>();
-
-  @Output()
-  quizToDeleted: EventEmitter<Quiz> = new EventEmitter<Quiz>();
-
-  constructor(private router : Router) {}
+  constructor(private router : Router, private popupService : PopupService) {}
 
   ngOnInit() {
   }
@@ -36,9 +31,16 @@ export class QuizComponent implements OnInit {
     this.quizSelected.emit(this.quiz);
   }
 
-  deleteQuiz(name: string) {
-    this.suppr.emit("active")
-    this.quizToDeleted.emit(this.quiz)
+  openPopup(){
+    this.popupService.open('Êtes-vous sûr de vouloir supprimer ce quiz ?', 'Oui', 'Non').subscribe(response => {
+      if(response)
+        this.deleteQuiz();
+    });
+  }
+
+  deleteQuiz() {
+
+      this.quizDeleted.emit(this.quiz);
   }
 
   editQuiz(){
