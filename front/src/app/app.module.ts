@@ -27,6 +27,7 @@ import { UserFormComponent } from './users/user-form/user-form.component';
 
 import { RouteService } from 'src/services/route.service';
 import { GameResultComponent } from './game/game-result/game-result.component';
+import { PopupComponent } from './popup/popup.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { GameResultComponent } from './game/game-result/game-result.component';
     GameResultComponent,
     UserListComponent,
     UserComponent,
-    UserFormComponent
+    UserFormComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
