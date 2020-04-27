@@ -18,6 +18,7 @@ export class UserListComponent implements OnInit{
             this.userList = users;
         })
         document.documentElement.style.setProperty('--bg',"#f2f2f2");
+        document.documentElement.style.setProperty('--bri','100%');
     }
     
     selectedUser(user : User){
