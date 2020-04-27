@@ -13,6 +13,10 @@ input, select{
     margin: 0.5em
 }
 
+input:focus, select:focus{
+    background-color: $white;
+}
+
 input[type=text], select{
     width: 80%;
     font-size: var(--font);

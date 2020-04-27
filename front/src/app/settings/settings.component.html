@@ -1,42 +1,49 @@
-<app-header [titre]="'Paramètres'"></app-header>
-<div class="options">
-    <span class="titles">Changer la taille</span><br>
-    <input #slider type="range" min="50" max="100" [value]="getStylesSize()" step="1" class="slider space" (input)="changeSize(slider.value)">
-    <fieldset class="space">
-        <legend class="titles">Taille actuelle : {{size}} </legend>
-        <!-- <div class="preview" [style.font-size.%]="rsize">Prévisualisation</div> -->
-        <div class="preview-quiz" id="preview-quiz">
-            <div class="card" [style.width.px]="width">
-                <div class="title">
-                    <h2 [style.font-size.%]="rsize">
-                    Nom du Quiz
-                    </h2>
-                </div>
-                <span class="span" [style.font-size.%]="rsize">
-                    Thème : Autre
-                </span>
-                <br>
-                <span class="span" [style.font-size.%]="rsize">
-                   Questions : 7
-                </span>
-                <div class="buttons">
-                    <div class="br"></div>
-                    <button class="button-card select" [style.font-size.%]="rsize">Jouer</button>
-                    <div class="br"></div>
-                    <div class="buttons-del-ed">
-                        <button class="button-card delete" [style.font-size.%]="rsize"><img width="100%" src="assets/delete.png"></button>
-                        <button class="button-card edit" [style.font-size.%]="rsize"><img width="100%" src="assets/edit.png"></button>
+
+<div [ngStyle]="{'background-color': color}">
+    <app-header [titre]="'Paramètres'"></app-header>
+    <div class="options">
+        <span class="titles">Changer la taille</span><br>
+        <input #slider type="range" min="50" max="100" [value]="getSize()" step="1" class="slider space" (input)="changeSize(slider.value)">
+        <fieldset class="space">
+            <legend class="titles">Taille actuelle : {{size}} </legend>
+            <!-- <div class="preview" [style.font-size.%]="rsize">Prévisualisation</div> -->
+            <div class="preview-quiz" id="preview-quiz">
+                <div class="card" [style.width.px]="width">
+                    <div class="title">
+                        <h2 [style.font-size.%]="rsize">
+                        Nom du Quiz
+                        </h2>
+                    </div>
+                    <span class="span" [style.font-size.%]="rsize">
+                        Thème : Autre
+                    </span>
+                    <br>
+                    <span class="span" [style.font-size.%]="rsize">
+                       Questions : 7
+                    </span>
+                    <div class="buttons">
+                        <div class="br"></div>
+                        <button class="button-card select" [style.font-size.%]="rsize">Jouer</button>
+                        <div class="br"></div>
+                        <div class="buttons-del-ed">
+                            <button class="button-card delete" [style.font-size.%]="rsize"><img width="100%" src="assets/delete.png"></button>
+                            <button class="button-card edit" [style.font-size.%]="rsize"><img width="100%" src="assets/edit.png"></button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </fieldset>
+        </fieldset>
+    </div>
+    <div class="options">
+        <span class="titles">Assombrir le fond</span><br>
+        <label class="switch">
+            <input #check type="checkbox" class="checkbox" [checked]="getColor()" (change)="changeColor(check.checked)">
+            <span class="check round"></span>
+        </label>
+    </div>
+    <div class="options">
+        <span class="titles">Changer la luminosité : {{light}}%</span><br>
+        <input #slider2 type="range" min="50" max="150" [value]="getBrightness()" step="1" class="slider space" (input)="changeBrightness(slider2.value)">
+    </div>
+    <button class="button-card valid" (click)="save()"><span>Enregistrer</span></button>
 </div>
-<div class="options">
-    <span class="titles">Assombrir le fond</span><br>
-    <label class="switch">
-        <input #check type="checkbox" class="checkbox" [checked]="getStylesColor()" (change)="changeColor(check.checked)">
-        <span class="check round"></span>
-    </label>
-</div>
-<button class="button-card valid" (click)="save()"><span>Enregistrer</span></button>

@@ -40,6 +40,7 @@ export class UserService{
             this.userSelected$.next(user);
             sessionStorage.setItem("color",user.setting.color);
             sessionStorage.setItem("font",user.setting.font.toString());
+            sessionStorage.setItem("light",user.setting.light.toString());
             sessionStorage.setItem("t2sOn",user.setting.t2sOn.toString());
         });
     }

@@ -20,6 +20,10 @@ export class SettingsComponent implements OnInit{
 
   color : string;
 
+  light : number;
+
+  flight : number;
+
   constructor(private userService : UserService, private router : Router) {   
  
     this.user = userService.getSelectedUser();
@@ -27,6 +31,7 @@ export class SettingsComponent implements OnInit{
     this.size= +sessionStorage.getItem("font");
     this.rsize = this.size*3;
     this.color = sessionStorage.getItem("color");
+    this.light = +sessionStorage.getItem("light");
     this.changeWidth();
   }
 
@@ -34,12 +39,21 @@ export class SettingsComponent implements OnInit{
     console.log("Settings of user",this.user);
   }
 
-  getStylesSize(){
+  getSize(){
     return +sessionStorage.getItem("font");
   }
 
-  getStylesColor(){
+  getColor(){
     return sessionStorage.getItem("color") != '#f2f2f2'
+  }
+
+  getBrightness(){
+    return this.light;
+  }
+
+  changeBrightness(lum : number){
+    this.light = lum;
+    document.documentElement.style.setProperty("--bri",this.light+'%');
   }
 
   changeSize(taille : number){
@@ -65,6 +79,7 @@ export class SettingsComponent implements OnInit{
     window.scrollTo(0,0);
     this.user.setting.font = this.size;
     this.user.setting.color = this.color;
+    this.user.setting.light = this.light;
     this.userService.updateUser(this.user);
   }
 }
