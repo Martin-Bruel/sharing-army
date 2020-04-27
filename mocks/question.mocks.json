@@ -1,9 +1,9 @@
 [
   {
-    "label": "Quel tournois ne fait pas parti du grand chelem ?",
+    "label": "Quel tournois ne fait pas partie du grand chelem?",
     "answers": [
       {
-        "value": "Open d’Australie",
+        "value": "L'Open d’Australie",
         "isCorrect": false
       },
       {
@@ -23,7 +23,7 @@
     "quizId": 12
   },
   {
-    "label": "Quel est l’homme qui détient le service le plus rapide ?",
+    "label": "Quel est l’homme qui détient le service le plus rapide?",
     "answers": [
       {
         "value": "Andy Roddick",
@@ -46,14 +46,14 @@
     "quizId": 12
   },
   {
-    "label": "Quel était la Vitesse du service le plus rapide ?",
+    "label": "Quel était la Vitesse du service le plus rapide?",
     "answers": [
       {
         "value": "263 km/h",
         "isCorrect": true
       },
       {
-        "value": "il est passé si vite que le capteur n’a pas pu le mesurer",
+        "value": "Il est passé si vite que le capteur n’a pas pu le mesurer",
         "isCorrect": false
       },
       {
@@ -69,7 +69,7 @@
     "quizId": 12
   },
   {
-    "label": "Quel effet n’existe pas au tennis ?",
+    "label": "Quel effet n’existe pas au tennis?",
     "answers": [
       {
         "value": "Le lift",
@@ -92,36 +92,14 @@
     "quizId": 12
   },
   {
-    "label": "qu'es qui n'a rien à voir avec le thème?",
-    "answers": [
-      {
-        "value": "rafaël nadal",
-        "isCorrect": false
-      },
-      {
-        "value": "une raquette",
-        "isCorrect": false
-      },
-      {
-        "value": "une dorade à la plancha",
-        "isCorrect": true
-      },
-      {
-        "value": "un filet",
-        "isCorrect": false
-      }
-    ],
-    "id": 1585637603324
-  },
-  {
-    "label": "D'où vient le tennis",
+    "label": "D'où vient le tennis?",
     "answers": [
       {
         "value": "Le jeu de paume",
         "isCorrect": true
       },
       {
-        "value": "d'une parti de bridge qui à mal tourné",
+        "value": "D'une partie de bridge qui a mal tourné",
         "isCorrect": false
       },
       {
@@ -137,14 +115,14 @@
     "quizId": 12
   },
   {
-    "label": "qu'es qui n'a rien à voir avec le thème?",
+    "label": "Qu'est-ce qui n'a rien à voir avec le thème?",
     "answers": [
       {
-        "value": "rafaël nadal",
+        "value": "Rafaël Nadal",
         "isCorrect": false
       },
       {
-        "value": "une raquette",
+        "value": "Une raquette",
         "isCorrect": false
       },
       {
@@ -163,19 +141,19 @@
     "label": "Avec quoi joue t'on au tennis?",
     "answers": [
       {
-        "value": "une raquette et une balle de tennis",
+        "value": "Une raquette et une balle de tennis",
         "isCorrect": true
       },
       {
-        "value": "des chaussures et une balle de foot",
+        "value": "Des chaussures et une balle de foot",
         "isCorrect": false
       },
       {
-        "value": "une club et une balle de golf",
+        "value": "Une club et une balle de golf",
         "isCorrect": false
       },
       {
-        "value": "la switch et des joycons (qui drifftent pas de préférence)",
+        "value": "La switch et des joycons (qui drifftent pas de préférence)",
         "isCorrect": false
       }
     ],
@@ -183,7 +161,7 @@
     "quizId": 12
   },
   {
-    "label": "Quel Streameur Twitch n'existe pas/plus?",
+    "label": "Quel streameur Twitch n'existe pas/plus?",
     "answers": [
       {
         "value": "Zerator",
@@ -206,7 +184,7 @@
     "quizId": 13
   },
   {
-    "label": "Quel Streameur à organiser la Zlan",
+    "label": "Quel Streameur a organisé la Zlan?",
     "answers": [
       {
         "value": "Zerator",
@@ -505,7 +483,7 @@
     "quizId": "1587988573194"
   },
   {
-    "label": "En quelle année C Colomb a-t-il découvert l’Amérique ?",
+    "label": "En quelle année C. Colomb a-t-il découvert l’Amérique ?",
     "answers": [
       {
         "value": "1512",

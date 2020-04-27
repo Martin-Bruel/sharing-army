@@ -1,6 +1,6 @@
 <div class="conteneur">
     <div class="title"><img src="assets/logoo.png" width="120px">QuizTalin</div>
-    <div class="addUser">pas fini</div>
+    <!-- <div class="addUser">pas fini</div> -->
     <div class='userList'>
         <div  *ngFor="let user of userList">
             <user [user]="user" (userSelected)="selectedUser($event)"></user>
