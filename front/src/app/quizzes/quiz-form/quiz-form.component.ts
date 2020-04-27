@@ -65,9 +65,9 @@ export class QuizFormComponent implements OnInit {
 
     
     else{
-      if (quizToCreate.name.length>20){
+      if (quizToCreate.name.length>40){
         this.popup.emit("active")
-        this.texte="Le nombre de caractère du titre est supérieur à la limite maximale de 20 caractères "
+        this.texte="Le nombre de caractère du titre est supérieur à la limite maximale de 40 caractères "
         this.text.emit(this.texte)
       }
       else{
