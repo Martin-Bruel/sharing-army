@@ -7,7 +7,14 @@ body{
     background-color: var(--bg);
 }
 
+html{
+    filter: brightness(var(--bri));
+}
+
 *:focus{
     outline: 6px solid blue;
+}
+
+*:not(input):not(select):focus{
     background-color: orange !important;
 }

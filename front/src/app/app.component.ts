@@ -19,6 +19,7 @@ export class AppComponent{
     this.userService.userSelected$.subscribe((user)=>{  
       document.documentElement.style.setProperty('--font',user.setting.font*3+'%');
       document.documentElement.style.setProperty('--bg',user.setting.color);
+      document.documentElement.style.setProperty('--bri',user.setting.light+'%');
     })
 
     if(userId!=0){

@@ -2,6 +2,7 @@ export interface Setting{
     userId : number,
     color : string,
     font : number,
+    light: number,
     t2sOn : boolean
 }
 
