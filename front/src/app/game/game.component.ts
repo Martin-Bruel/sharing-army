@@ -41,6 +41,9 @@ export class GameComponent implements OnInit {
     if(!this.isFinished()){
 
       if(!this.sameQuestion()){
+        if (speechSynthesis.speaking){
+          speechSynthesis.cancel();
+        }
         var rep=this.game.quiz.questions[this.game.step].answers;
         var text2="";
         text2=this.createAnswersText(text2,rep);
