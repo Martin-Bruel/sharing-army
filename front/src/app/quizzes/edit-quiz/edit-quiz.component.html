@@ -4,16 +4,7 @@
     <h2>Titre : {{quiz.name}}</h2>
     <h2>Nombre de questions : {{quiz.questions.length}}</h2>
   </div>
-    <app-question-form [cardWidth]="questionWidth" [quiz]="quiz" (popup)="openModal($event)" (text)="textEdit($event)"></app-question-form>
+    <app-question-form [cardWidth]="questionWidth" [quiz]="quiz" (text)="textEdit($event)"></app-question-form>
     <app-question-list [questionWidth]="questionWidth" [fdir]="fdir" [quiz]="quiz"></app-question-list>
 </ng-container>
-<div class="modal" id="modal">
-    <div class="modal-header">
-      <div class="title">Erreur</div>
-      <button data-close-button class="close-button" (click)="closeModal()">&times;</button>
-    </div>
-    <div class="modal-body" id="modal-body">
-        {{textBody}}
-    </div>
-  </div>
   <div id="overlay"></div>

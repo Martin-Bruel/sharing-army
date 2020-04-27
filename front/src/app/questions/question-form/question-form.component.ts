@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 import { Quiz } from 'src/models/quiz.model';
 import { Question } from 'src/models/question.model';
+import { PopupService } from 'src/services/popup.service';
 
 @Component({
   selector: 'app-question-form',
@@ -24,11 +25,10 @@ export class QuestionFormComponent implements OnInit {
   text : EventEmitter<string> = new EventEmitter<string>();
 
   public questionForm: FormGroup;
-  public texte : string;
   public checker : boolean;
   public nbAnswer : number;
 
-  constructor(public formBuilder: FormBuilder, private quizService: QuizService) {
+  constructor(public formBuilder: FormBuilder, private quizService: QuizService, private popupService : PopupService) {
     // Form creation
     this.initializeQuestionForm();
   }
@@ -38,6 +38,11 @@ export class QuestionFormComponent implements OnInit {
       label: ['', Validators.required],
       answers: this.formBuilder.array([])
     });
+    for(var i = 0; i < 4; i++){
+
+      this.answers.push(this.createAnswer());
+
+    }
   }
 
   ngOnInit() {
@@ -53,26 +58,6 @@ export class QuestionFormComponent implements OnInit {
       isCorrect: false,
     });
   }
-
-  addAnswer() {
-    const question = this.questionForm.getRawValue() as Question;
-    if(question.label.length>80){
-        this.popup.emit("active");
-        this.texte = "Le nombre de caractère du titre de la question est supérieur à la limite maximale de 80 caractères "
-        this.text.emit(this.texte)
-      }
-    else{
-      if(question.label.length==0){
-        this.popup.emit("active");
-        this.texte = "Il n'y a pas de question"
-        this.text.emit(this.texte)
-      }
-      else{
-        this.answers.push(this.createAnswer());
-      }
-    }
-    
-  }
   
   addQuestion() {
     this.checker=true;
@@ -80,18 +65,16 @@ export class QuestionFormComponent implements OnInit {
     if(this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
       
-      if(question.answers.length<2){
-        this.popup.emit("active");
-        this.texte = "Il faut au moins 2 questions pour créer un quiz"
-        this.text.emit(this.texte)
+      if(question.answers.length<4){
+        this.popupService.open('Il faut 4 questions pour créer un quiz', 'OK');
         this.checker=false
       }
       if(this.checker){
         question.answers.forEach(element => {
           if(element.value == '' || element.value.length>60){
-            this.popup.emit("active")
-            this.texte = "Les réponses doivent avoir entre 1 et 60 caractères"
-            this.text.emit(this.texte)
+
+            
+            this.popupService.open('Les réponses doivent avoir entre 1 et 60 caractères', 'OK');
             this.checker=false
           }
           if(element.isCorrect){
@@ -101,9 +84,7 @@ export class QuestionFormComponent implements OnInit {
         });
       }
       if(this.checker && this.nbAnswer==0){
-        this.popup.emit("active")
-        this.texte = "Il n'y a pas de bonne réponse"
-        this.text.emit(this.texte)
+        this.popupService.open('Il n\'y a pas de bonne réponse', 'OK');
         this.checker=false
       }
 
@@ -111,7 +92,9 @@ export class QuestionFormComponent implements OnInit {
           this.quizService.addQuestion(this.quiz, question);
           this.initializeQuestionForm();
         }
-      
+    }
+    else{
+      this.popupService.open('Saisie invalide, veuillez remplir tous les champs', 'OK');
     }
   }
 }

@@ -32,14 +32,4 @@ export class EditQuizComponent implements OnInit {
   textEdit(text : string){
     this.textBody = text
   }
-  openModal( modal : string ) {
-    if (modal == null) return
-    document.getElementById("modal").classList.add(modal)
-    document.getElementById("overlay").classList.add(modal)
-  }
-
-  closeModal() {
-    document.getElementById("modal").classList.remove("active")
-    document.getElementById("overlay").classList.remove("active")
-  }
 }

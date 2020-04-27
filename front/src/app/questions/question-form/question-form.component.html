@@ -7,7 +7,6 @@
         <input class="input-custom" type="text" id="label" [formControlName]="'label'">
       </label>
       <br>
-      <button class="button-card" (click)="addAnswer()">Ajouter une réponse</button>
       <div class="answer" formArrayName="answers">
         <div *ngFor="let address of answers.controls; let i=index">
           <div class="answer-form" [formGroupName]="i">

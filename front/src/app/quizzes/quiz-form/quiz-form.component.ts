@@ -27,11 +27,8 @@ export class QuizFormComponent implements OnInit {
   //public quizListComponent :QuizListComponent;
 
   constructor(public formBuilder: FormBuilder, public quizService: QuizService, private popupService : PopupService) {
-    // Form creation
-    this.quizForm = this.formBuilder.group({
-      name: [''],
-      theme:[''],
-    });
+    
+    this.initialisationForm();
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!
     // More information: https://angular.io/guide/reactive-forms#simple-form-validation
     // Advanced validation: https://angular.io/guide/form-validation#reactive-form-validation
@@ -39,7 +36,18 @@ export class QuizFormComponent implements OnInit {
 
   ngOnInit() {
   }
-  texte : string
+
+
+  initialisationForm(){
+
+    // Form creation
+    this.quizForm = this.formBuilder.group({
+      name: [''],
+      theme:[''],
+    });
+  }
+
+
   addQuiz() {
     // We retrieve here the quiz object.rom the quizForm and we cast the type "as Quiz".
     const quizToCreate: Quiz = this.quizForm.getRawValue() as Quiz;
@@ -63,14 +71,17 @@ export class QuizFormComponent implements OnInit {
 
     
     else{
-      if (quizToCreate.name.length>20){
+      if (quizToCreate.name.length>30){
         var text="Le nombre de caractère du titre est supérieur à la limite maximale de 20 caractères "
 
-        this.popupService.open('popup', text, 'OK');
+        this.popupService.open( text, 'OK');
       }
       else{
         console.log('Adding quiz: ', quizToCreate);
+
+
         this.quizService.addQuiz(quizToCreate);
+        this.initialisationForm();
       }      
     }
   }

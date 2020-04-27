@@ -73,6 +73,9 @@ export class QuizService {
 
   deleteQuestion(quiz: Quiz, question: Question) {
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath + '/' + question.id;
-    this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
+    this.http.delete<Question>(questionUrl, this.httpOptions).subscribe(() =>{
+      this.setSelectedQuiz(quiz.id)
+      this.setQuizzesFromUrl();
+    } );
   }
 }
