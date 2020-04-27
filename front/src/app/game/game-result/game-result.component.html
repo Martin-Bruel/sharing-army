@@ -7,10 +7,19 @@
     {{game.rightAnswer}} / {{game.quiz.questions.length}}
     
 </div>
-<div *ngFor = "let answer of game.answersSelected ; let i = index">
-    <li> {{recap(i)}} {{recap2(i)}} {{recap3(i)}}</li>
-    
-</div>
+<table class="span">
+    <tr style="text-align: left;">
+        <th style="padding-right: 40px;">Questions</th>
+        <th style="padding-right: 40px;">Votre Réponse</th>
+        <th style="padding-right: 40px;">Résultat</th>
+    </tr>
+    <tr *ngFor = "let answer of game.answersSelected ; let i = index" [ngStyle]="{'background-color': recap3(i) === 'faux' ? '#e38181' : '#81e389'}">
+        <td style="padding-right: 40px;">{{recap(i)}}</td>
+        <td>{{recap2(i)}}</td>
+        <td>{{recap3(i)}}</td>
+    </tr>
+    <!-- <li style="margin-top: 20px;"><span class="span" [ngStyle]="{'background-color': recap3(i) === 'faux' ? '#e38181' : '#81e389'}">{{recap(i)}} {{recap2(i)}} {{recap3(i)}}</span></li> -->
+</table>
 
 <div class="button">
     <button class="button-card" (click)="retry()">Réessayer</button>

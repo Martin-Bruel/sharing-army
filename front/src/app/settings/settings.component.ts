@@ -22,7 +22,7 @@ export class SettingsComponent implements OnInit{
 
   light : number;
 
-  flight : number;
+  t2s : boolean;
 
   constructor(private userService : UserService, private router : Router) {   
  
@@ -32,6 +32,7 @@ export class SettingsComponent implements OnInit{
     this.rsize = this.size*3;
     this.color = sessionStorage.getItem("color");
     this.light = +sessionStorage.getItem("light");
+    this.t2s = sessionStorage.getItem("t2s")=="true";
     this.changeWidth();
   }
 
@@ -49,6 +50,15 @@ export class SettingsComponent implements OnInit{
 
   getBrightness(){
     return this.light;
+  }
+
+  getT2s(){
+    return this.t2s == true;
+  }
+
+  changeT2s(bool: boolean){
+    if(bool) this.t2s = true
+    else this.t2s = false;
   }
 
   changeBrightness(lum : number){
@@ -80,6 +90,7 @@ export class SettingsComponent implements OnInit{
     this.user.setting.font = this.size;
     this.user.setting.color = this.color;
     this.user.setting.light = this.light;
+    this.user.setting.t2sOn = this.t2s;
     this.userService.updateUser(this.user);
   }
 }

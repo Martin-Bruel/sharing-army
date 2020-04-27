@@ -61,7 +61,7 @@ export class GameResultComponent implements OnInit {
         if(this.game.rightAnswer > this.game.quiz.questions.length * 1/3){
            
             document.documentElement.style.setProperty('--cbg', 'orange');
-            return 'Encore un petit éffort vous y êtes presque !';
+            return 'Encore un petit effort vous y êtes presque !';
         }
 
         else{

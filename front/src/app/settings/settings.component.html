@@ -35,15 +35,28 @@
         </fieldset>
     </div>
     <div class="options">
-        <span class="titles">Assombrir le fond</span><br>
-        <label class="switch">
-            <input #check type="checkbox" class="checkbox" [checked]="getColor()" (change)="changeColor(check.checked)">
-            <span class="check round"></span>
-        </label>
+        <fieldset>
+            <legend class="titles">Assombrir le fond</legend>
+            <label class="switch">
+                <input #check type="checkbox" class="checkbox" [checked]="getColor()" (change)="changeColor(check.checked)">
+                <span class="check round"></span>
+            </label>
+        </fieldset>
     </div>
     <div class="options">
-        <span class="titles">Changer la luminosité : {{light}}%</span><br>
-        <input #slider2 type="range" min="50" max="150" [value]="getBrightness()" step="1" class="slider space" (input)="changeBrightness(slider2.value)">
+        <fieldset>
+            <legend class="titles">Changer la luminosité : {{light}}%</legend>
+            <input #slider2 type="range" min="50" max="150" [value]="getBrightness()" step="1" class="slider space" (input)="changeBrightness(slider2.value)">
+        </fieldset>
+    </div>
+    <div class="options">
+        <fieldset>
+            <legend class="titles">Lecture des questions</legend>
+            <label class="switch">
+                <input #check2 type="checkbox" class="checkbox" [checked]="getT2s()" (change)="changeT2s(check2.checked)">
+                <span class="check round"></span>
+            </label>
+        </fieldset>
     </div>
     <button class="button-card valid" (click)="save()"><span>Enregistrer</span></button>
 </div>

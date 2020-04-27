@@ -16,5 +16,10 @@
     "theme": "Géographie",
     "id": 1587221740742,
     "questions":[]
+  },
+  {
+    "name": "Questions pour un champion",
+    "theme": "Autre",
+    "id": 1587988573194
   }
 ]
