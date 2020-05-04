@@ -13,13 +13,12 @@
         <th style="padding-right: 40px;">Votre Réponse</th>
         <th style="padding-right: 40px;">Résultat</th>
     </tr>
-    <tr *ngFor = "let answer of game.answersSelected ; let i = index" [ngStyle]="{'background-color': game.answersSelected[i].isCorrect ? '#e38181' : '#81e389'}">
+    <tr *ngFor = "let answer of game.answersSelected ; let i = index" [ngStyle]="{'background-color': !game.answersSelected[i].isCorrect ? '#e38181' : '#81e389'}">
         <td style="padding-right: 40px;">{{game.quiz.questions[i].label}}</td>
         <td>{{game.answersSelected[i].value}}</td>
-        <td *ngIf="game.answersSelected[i].isCorrect; else elseBlock">vrai</td>
-        <ng-template #elseBlock>faux</ng-template>
+        <td *ngIf="game.answersSelected[i].isCorrect; else elseBlock">Vrai</td>
+        <ng-template #elseBlock>Faux</ng-template>
     </tr>
-    <!-- <li style="margin-top: 20px;"><span class="span" [ngStyle]="{'background-color': recap3(i) === 'faux' ? '#e38181' : '#81e389'}">{{recap(i)}} {{recap2(i)}} {{recap3(i)}}</span></li> -->
 </table>
 
 <div class="button">
