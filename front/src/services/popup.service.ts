@@ -12,7 +12,6 @@ import { first } from 'rxjs/operators';
 export class PopupService {  
 
     private response$ : Subject<boolean> = new Subject()
-    private response : boolean;
 
     private popup: any;
 
@@ -20,8 +19,7 @@ export class PopupService {
 
     setResponse(response : boolean){
 
-        this.response = response;
-        this.response$.next(this.response);
+        this.response$.next(response);
     }
 
     add(popup: any) {

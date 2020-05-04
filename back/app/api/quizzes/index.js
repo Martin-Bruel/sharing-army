@@ -2,7 +2,6 @@ const { Router } = require('express')
 
 const { Quiz } = require('../../models')
 
-const QuestionRouter = require('./questions')
 const quiz_helper = require('../../utils/quiz-helper')
 
 const router = new Router()
@@ -73,9 +72,6 @@ router.put('/:quizId', (req, res) => {
   //todo : router.get('/:theme' , (req, res) => ...) + une fonction pour renvoyer tt les Quizz comportant le theme demande
   
 })
-
-router.use('/:quizId/questions', QuestionRouter)
-
 
 module.exports = router
 
