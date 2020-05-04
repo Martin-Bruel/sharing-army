@@ -21,7 +21,7 @@ export class QuestionComponent implements OnInit {
   }
 
   delete() {
-    this.popupService.open('Êtes-vous sûr de vouloir supprimer ce quiz ?', 'Oui', 'Non').subscribe((response) => {
+    this.popupService.open('Êtes-vous sûr de vouloir supprimer cette question ?', 'Oui', 'Non').subscribe((response) => {
 
       if(response)
         this.deleteQuestion.emit(this.question);

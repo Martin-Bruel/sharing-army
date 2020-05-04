@@ -55,7 +55,7 @@ export class UserService{
     }
 
     updateUser(user : User){
-        const urlId = this.userUrl + '/' + sessionStorage.getItem("userId");
+        const urlId = this.userUrl + '/' + user.id;
         this.http.put<User>(urlId, user, this.httpOptions).subscribe((user)=>this.setSelectedUser(user.id));
     }
 }
