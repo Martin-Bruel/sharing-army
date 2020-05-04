@@ -48,8 +48,8 @@ export class GameComponent implements OnInit {
         var text2="";
         text2=this.createAnswersText(text2,rep);
         var text =this.game.quiz.questions[this.game.step].label;
+        text=text+" "+text2;
         this.t2s(text);
-        this.t2s(text2);
         this.onlyOnce=this.game.step;
       }
       return this.game.quiz.questions[this.game.step];
@@ -59,6 +59,9 @@ export class GameComponent implements OnInit {
   }
 
   t2s(txt:string){
+    if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+    }
     if(sessionStorage.getItem("t2sOn")=="false"){
       if(!speechSynthesis.paused){
       speechSynthesis.pause();
@@ -104,6 +107,9 @@ export class GameComponent implements OnInit {
 
   deleteGame(){
     if(speechSynthesis.speaking){
+      speechSynthesis.cancel();
+    }
+    if(sessionStorage.getItem("t2sOn")=="false"){
       speechSynthesis.cancel();
     }
     this.gameService.deleteGame();
