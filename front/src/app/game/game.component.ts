@@ -29,21 +29,30 @@ export class GameComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Permet de selectionner la reponse choisie par l'user
+   * @param answer  reponse choisie par l'user
+   */
+
   answerSelected(answer:Answer){
+    ////Suppresion de la queue
     if(speechSynthesis.speaking || speechSynthesis.paused){
       speechSynthesis.cancel();
     }
+    
     this.gameService.addAnswer(answer);
   }
 
+  /**
+   *Permet d'obtenir la question actuelle 
+   */
+
   getCurrentQuestion(){
-    
+    //Si la partie n'est pas finie renvoi la questiona actuelle
     if(!this.isFinished()){
 
+      //Ajout du texte de la question et des reponses au Text-to-speech seulement une fois
       if(!this.sameQuestion()){
-        if (speechSynthesis.speaking){
-          speechSynthesis.cancel();
-        }
         var rep=this.game.quiz.questions[this.game.step].answers;
         var text2="";
         text2=this.createAnswersText(text2,rep);
@@ -52,66 +61,106 @@ export class GameComponent implements OnInit {
         this.t2s(text);
         this.onlyOnce=this.game.step;
       }
+
       return this.game.quiz.questions[this.game.step];
     }
 
     
   }
 
+  /**
+   * Permet de lire un text a l'aide du text-to-speech
+   * @param txt le texte a lire
+   */
+
   t2s(txt:string){
+
+    //Suppresion de la queue precedente
     if(speechSynthesis.speaking){
       speechSynthesis.cancel();
     }
+
+    //Pause le text-to-speech si l'user ne le veut pas
     if(sessionStorage.getItem("t2sOn")=="false"){
       if(!speechSynthesis.paused){
       speechSynthesis.pause();
       }
     }
-    console.log(sessionStorage.getItem("t2sOn"))
-    //console.log(sessionStorage.getItem("t2sOn")=="true");
+
+    //Lecture du text
     var msg = new SpeechSynthesisUtterance();
     msg.text=txt;
     msg.lang="fr-FR";
     window.speechSynthesis.speak(msg);
   }
 
+  /**
+   * Permet de creer le text contenant les réponses au format voulue (haut,bas,gauche,droite)
+   * @param txt le texte a modifier
+   * @param list la liste de reponses
+   */
+
   createAnswersText(txt:string,list:Answer[]){
     const prefixes=["haut","gauche","droite","bas"];
     var i=0;
-    //console.log(list);
     for(i;i<list.length;i++){
-      //console.log(list[i].value);
       txt=txt+"Réponse "+prefixes[i]+" : "+list[i].value+" . ";
     }
-    //console.log(txt);
     return txt;
   }
+
+  /**
+   * Permet de savoir si l'utilisateur en est toujours a la meme question. 
+   */
+
   sameQuestion(){
     //console.log(this.game.step);
     //console.log(this.onlyOnce);
     //console.log(this.game.step==this.onlyOnce);
     return this.game.step==this.onlyOnce;
   }
+
+  /**
+   *Permet de repeter la question 
+   */
+
   repeatQuestion(){
     this.onlyOnce-=1;
   }
+
+  /**
+   * Permet de savoir si une partie est terminee
+   */
+
   isFinished(){
+
+    //b est true si la partie est finie, false sinon
     var b=this.game.step >= this.game.quiz.questions.length;
+
+    //lecture des resultats seulement une fois
     if(b && this.onlyOnce2!=this.onlyOnce){
       var txt = "Vous avez"+ this.game.rightAnswer +"bonne reponse sur" + this.game.quiz.questions.length +"questions .";
       this.t2s(txt);
       this.onlyOnce2=this.onlyOnce;
     }
+
     return b;
   }
 
+  /**
+   * Suppression de la partie
+   */
+
   deleteGame(){
+
+    //Suppression de la queue du text-to-speech
     if(speechSynthesis.speaking){
       speechSynthesis.cancel();
     }
     if(sessionStorage.getItem("t2sOn")=="false"){
       speechSynthesis.cancel();
     }
+
     this.gameService.deleteGame();
   }
 }
