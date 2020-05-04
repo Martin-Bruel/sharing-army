@@ -45,7 +45,7 @@ export class SettingsComponent implements OnInit{
     this.rsize = this.size*3; // Taille de fonte réellement utilisée au travers de l'application
     this.color = sessionStorage.getItem("color");
     this.light = +sessionStorage.getItem("light");
-    this.t2s = sessionStorage.getItem("t2s")=="true";
+    this.t2s = sessionStorage.getItem("t2sOn")=="true";
     this.changeWidth();
   }
 
@@ -69,7 +69,7 @@ export class SettingsComponent implements OnInit{
   }
 
   getT2s(){
-    return this.t2s == true;
+    return this.t2s;
   }
 
   changeT2s(bool: boolean){
