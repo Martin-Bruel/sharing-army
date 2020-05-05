@@ -64,7 +64,7 @@ export class GameResultComponent implements OnInit {
         this.gameService.createGame(quiz);
         this.gameService.gameCreated$.subscribe((game: Game) => {
             console.log("Retrying")
-            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigateByUrl('/accueil', { skipLocationChange: true }).then(() => {
                 this.router.navigate(['/game/'+ game.id]);
             }); 
         })
