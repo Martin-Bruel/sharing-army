@@ -2,6 +2,8 @@ const { Router } = require('express')
 
 const { Game } = require('../../models')
 
+const game_helper = require('../../utils/game-helper')
+
 const router = new Router()
 
 router.get('/:gameId', (req,res) => {
@@ -9,6 +11,21 @@ router.get('/:gameId', (req,res) => {
 
     const game = Game.getById(req.params.gameId)
     res.status(200).json(game)
+
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+router.get('/userId/:userId', (req,res) => {
+  try{
+
+    const game  = game_helper.getGameByUserId(req.params.userId)
+    if(game != null)
+      res.status(200).json(game)
+
+    else
+      res.status(200).json()
   } catch (err) {
     res.status(500).json(err)
   }

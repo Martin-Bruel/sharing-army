@@ -7,4 +7,5 @@ module.exports = new BaseModel('Game', {
   date: Joi.number(),
   step: Joi.number(),
   rightAnswer: Joi.number(),
+  userId: Joi.number(),
 })

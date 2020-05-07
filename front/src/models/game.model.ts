@@ -9,4 +9,5 @@ export interface Game{
     date?:number;
     step:number;
     rightAnswer:number;
+    userId:number;
 }

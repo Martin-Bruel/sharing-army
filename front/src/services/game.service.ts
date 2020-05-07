@@ -4,8 +4,8 @@ import { Subject, of } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { serverUrl, httpOptionsBase } from '../configs/server.config';
 import { Game } from 'src/models/game.model';
-import { QuizService } from './quiz.service';
 import { Answer } from 'src/models/question.model';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +20,14 @@ export class GameService {
   private game: Game;
 
   public gameCreated$: Subject<Game> = new Subject();
-
   public gameSelected$ : Subject<Game> = new Subject();
+  public gameNotFinished$ : Subject<Game> = new Subject();
 
   private gameUrl = serverUrl + '/game';
 
   private httpOptions = httpOptionsBase;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService : UserService) {}
 
   createGame(quiz:Quiz) {
     
@@ -37,6 +37,7 @@ export class GameService {
     this.game.date = Date.now();
     this.game.answersSelected = [];
     this.game.rightAnswer = 0;
+    this.game.userId = this.userService.getSelectedUser().id;
     this.http.post<Game>(this.gameUrl, this.game, this.httpOptions).subscribe((game) => {
 
       this.game = game;
@@ -49,6 +50,15 @@ export class GameService {
     const urlWithId = this.gameUrl + '/' + gameId;
     this.http.get<Game>(urlWithId).subscribe((game) => {
       this.gameSelected$.next(game);
+      this.game = game;
+    });
+  }
+
+  setNotFinishedGame(userId:number){
+
+    const urlWithId = this.gameUrl + '/userId/' + userId;
+    this.http.get<Game>(urlWithId).subscribe((game) => {
+      this.gameNotFinished$.next(game);
       this.game = game;
     });
   }

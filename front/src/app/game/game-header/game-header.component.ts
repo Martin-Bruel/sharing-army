@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, HostListener, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { PopupService } from 'src/services/popup.service';
 
 
 export enum KEY_CODE {
@@ -39,7 +40,7 @@ export class GameHeaderComponent implements OnInit {
 
   
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private popupService : PopupService) {
     if(sessionStorage.getItem("t2sOn")=="false"){
       this.image = "assets/nospeaker.png"
     }
@@ -50,8 +51,14 @@ export class GameHeaderComponent implements OnInit {
   }
 
   back(){
-    this.delete.emit();
-    this.router.navigate(['/quiz-list']);
+
+    this.popupService.open("Êtes-vous sûr de vouloir quitter la partie en cours ?", "Oui", "Non").subscribe((reponse) => {
+
+      if(reponse){
+        this.delete.emit();
+        this.router.navigate(['/quiz-list']);
+      }
+    })
   }
 
   changeBool(){
