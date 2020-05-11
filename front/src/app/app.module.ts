@@ -60,7 +60,7 @@ import { PopupComponent } from './popup/popup.component';
     HttpClientModule,
   ],
   providers: [
-    RouteService
+    RouteService,
   ],
   bootstrap: [AppComponent]
 })

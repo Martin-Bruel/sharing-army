@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RouteService } from 'src/services/route.service';
 
@@ -10,12 +10,13 @@ import { RouteService } from 'src/services/route.service';
 })
 export class HeaderComponent implements OnInit {
 
-  //Todo : tester des trucs avec @Input depuis l'appel du header dans les autres html
-  // <app-header [header_attribut]="input"></app-header> 
   constructor(private router: Router, private activatedRoute : ActivatedRoute, private routeService : RouteService) { }
 
   @Input()
   titre: string;
+
+  @Output()
+  goBack: EventEmitter<String> = new EventEmitter<String>();
 
   ngOnInit() {}
 
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
 
       case "quiz-list" : this.router.navigate(['/accueil']); break;
       case "edit-quiz" : this.router.navigate(['/quiz-list']); break;
-      case "settings"  : this.router.navigate([this.routeService.getPreviousUrl()]); break;
+      case "settings"  : this.goBack.emit(this.routeService.getPreviousUrl()); break;
     }
   }
 }

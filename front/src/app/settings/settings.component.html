@@ -1,6 +1,6 @@
 
 <div [ngStyle]="{'background-color': color}">
-    <app-header [titre]="'Paramètres'"></app-header>
+    <app-header [titre]="'Paramètres'" (goBack)="goBack($event)"></app-header>
     <div class="options">
         <span class="titles">Changer la taille</span><br>
         <input #slider type="range" min="50" max="100" [value]="getSize()" step="1" class="slider space" (input)="changeSize(slider.value)">

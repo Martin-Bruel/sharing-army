@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { UserService } from 'src/services/user.service';
 import { User } from 'src/models/user.model';
 import { Router, NavigationEnd } from '@angular/router';
+import { PopupService } from 'src/services/popup.service';
+import { RouteService } from 'src/services/route.service';
 
 @Component({
   selector: 'settings',
@@ -24,9 +26,10 @@ export class SettingsComponent implements OnInit{
 
   t2s : boolean;
 
-  constructor(private userService : UserService, private router : Router) {   
- 
-    this.user = userService.getSelectedUser(); // Récupération de l'utilisateur courant
+  savedSettings : boolean = true;
+
+  constructor(private userService : UserService, private router : Router, private popupService : PopupService) {   
+     this.user = userService.getSelectedUser(); // Récupération de l'utilisateur courant
 
     /**
      * En cas de rafraîchissement :
@@ -53,6 +56,20 @@ export class SettingsComponent implements OnInit{
     console.log("Settings of user",this.user);
   }
 
+  goBack(route : String){
+    if(!this.savedSettings){
+      this.openPopup(route);
+    }else{
+      this.router.navigate([route]);
+    }
+  }
+
+  openPopup(route : String){
+    this.popupService.open("Êtes-vous sûr de vouloir quitter sans sauvegarder ?", "Oui", "Non").subscribe(response =>{
+      if(response){this.router.navigate([route])}
+    })
+  }
+
   getSize(){
     return +sessionStorage.getItem("font");
   }
@@ -75,17 +92,20 @@ export class SettingsComponent implements OnInit{
   changeT2s(bool: boolean){
     if(bool) this.t2s = true
     else this.t2s = false;
+    this.savedSettings = false;
   }
 
   changeBrightness(lum : number){
     this.light = lum;
     document.documentElement.style.setProperty("--bri",this.light+'%');
+    this.savedSettings = false;
   }
 
   changeSize(taille : number){
     this.size = taille;
     this.rsize = this.size*3;
     this.changeWidth();
+    this.savedSettings = false;
   }
   
   /**
@@ -106,15 +126,16 @@ export class SettingsComponent implements OnInit{
   changeColor(bool : boolean){
     if(bool) this.color = "#aaaaaa"
     else this.color = "#f2f2f2"
+    this.savedSettings = false;
   }
 
   save(){
+    this.savedSettings = true;
     window.scrollTo(0,0);
     this.user.setting.font = this.size;
     this.user.setting.color = this.color;
     this.user.setting.light = this.light;
     this.user.setting.t2sOn = this.t2s;
-
     this.userService.updateUser(this.user);
   }
 }

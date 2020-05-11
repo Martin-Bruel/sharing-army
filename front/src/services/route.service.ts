@@ -8,7 +8,7 @@ export class RouteService {
     private history = [];
 
     constructor(        
-        private router : Router
+        private router : Router,
     ){}
 
     public loadRouting(): void {

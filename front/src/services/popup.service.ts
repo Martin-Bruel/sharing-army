@@ -18,7 +18,6 @@ export class PopupService {
     constructor(){}
 
     setResponse(response : boolean){
-
         this.response$.next(response);
     }
 
