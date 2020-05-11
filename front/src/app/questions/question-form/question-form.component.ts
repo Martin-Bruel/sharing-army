@@ -89,9 +89,10 @@ export class QuestionFormComponent implements OnInit {
       }
 
       if(this.checker){
-          this.quizService.addQuestion(this.quiz, question);
-          this.initializeQuestionForm();
-        }
+        
+        this.quizService.addQuestion(this.quiz, question);
+        this.initializeQuestionForm();
+      }
     }
     else{
       this.popupService.open('Saisie invalide, veuillez remplir tous les champs', 'OK');
