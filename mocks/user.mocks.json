@@ -1,33 +1,33 @@
 [
   {
-    "name": "Michel",
+    "name": "Pierre",
     "id": 12,
     "setting": {
       "id": 12,
       "color": "#aaaaaa",
-      "font": 50,
-      "light": "50",
+      "font": 100,
+      "light": 100,
       "t2sOn": false
     }
   },
   {
-    "name": "Michel2",
+    "name": "Jean-Didier",
     "id": 13,
     "setting": {
       "id": 13,
       "color": "#aaaaaa",
-      "font": "100",
+      "font": "60",
       "light": 100,
-      "t2sOn": true
+      "t2sOn": false
     }
   },
   {
-    "name": "Michel3",
+    "name": "Simon",
     "id": 14,
     "setting": {
       "id": 14,
-      "color": "#48BB3D",
-      "font": 80,
+      "color": "#f2f2f2",
+      "font": "75",
       "light": 100,
       "t2sOn": true
     }
@@ -37,10 +37,10 @@
     "id": 15,
     "setting": {
       "id": 15,
-      "color": "#aaaaaa",
+      "color": "#48BB3D",
       "font": 50,
       "light": 100,
-      "t2sOn": true
+      "t2sOn": false
     }
   }
 ]
