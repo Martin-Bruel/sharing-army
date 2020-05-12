@@ -4,8 +4,8 @@
     "id": 12,
     "setting": {
       "id": 12,
-      "color": "#aaaaaa",
-      "font": 100,
+      "color": "#f2f2f2",
+      "font": 50,
       "light": 100,
       "t2sOn": false
     }
